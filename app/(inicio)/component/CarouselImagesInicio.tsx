@@ -53,14 +53,14 @@ export function CarouselImagesInicio() {
                         </div>
                     </CarouselItem>
                     <CarouselItem>
-                        <div className="relative h-[500px] w-full overflow-hidden rounded-2xl">
+                        <div className="relative 2xl:h-[500px] xl:h-[400px] md:h-[300px] h-[150px] w-full overflow-hidden rounded-2xl">
                             <Image
                                 src={fundo02}
                                 alt="Banner SG Discos"
                                 fill
                                 priority
                                 sizes="100vw"
-                                className="object-cover object-center"
+                                className="lg:object-cover lg:object-center"
                             />
 
                             <div className="absolute inset-0 bg-black/70" />
