@@ -38,7 +38,7 @@ export function HeaderLayoutInicio() {
 
     return (
         <Fragment>
-            <div className="w-full border-b border-b-fundoSecundaria flex">
+            <div className="w-full flex">
                 <div className="flex w-1/5 pb-1.5">
                     <div className="px-4 py-2">
                         <Image

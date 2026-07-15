@@ -36,6 +36,19 @@ export function CarouselImagesInicio() {
         };
     }, [api]);
 
+    useEffect(() => {
+        if (!api) return;
+
+        const intervalo = setInterval(() => {
+            const proximoSlide =
+                api.selectedScrollSnap() === 0 ? 1 : 0;
+
+            api.scrollTo(proximoSlide);
+        }, 5000);
+
+        return () => clearInterval(intervalo);
+    }, [api]);
+
 
     return (
         <div>
@@ -113,6 +126,33 @@ export function CarouselImagesInicio() {
                         </div>
                     </CarouselItem>
                 </CarouselContent>
+                <CarouselPrevious
+                    className="
+                        left-3
+                        size-8
+                        border-none
+                        bg-black/60
+                        text-white
+                        hover:bg-primaria
+                        hover:text-black
+                        md:left-5
+                        md:size-9
+                    "
+                />
+
+                <CarouselNext
+                    className="
+                        right-3
+                        size-8
+                        border-none
+                        bg-black/60
+                        text-white
+                        hover:bg-primaria
+                        hover:text-black
+                        md:right-5
+                        md:size-9
+                    "
+                />
             </Carousel>
         </div>
     );

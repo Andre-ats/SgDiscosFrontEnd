@@ -5,42 +5,7 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel";
-import Image from "next/image";
-
-const produtos = [
-    {
-        nome: "Produto01",
-        imagem: "https://placehold.co/380x380/png?text=Produto01",
-    },
-    {
-        nome: "Produto02",
-        imagem: "https://placehold.co/380x380/png?text=Produto02",
-    },
-    {
-        nome: "Produto03",
-        imagem: "https://placehold.co/380x380/png?text=Produto03",
-    },
-    {
-        nome: "Produto04",
-        imagem: "https://placehold.co/380x380/png?text=Produto04",
-    },
-    {
-        nome: "Produto06",
-        imagem: "https://placehold.co/380x380/png?text=Produto06",
-    },
-    {
-        nome: "Produto07",
-        imagem: "https://placehold.co/380x380/png?text=Produto07",
-    },
-    {
-        nome: "Produto08",
-        imagem: "https://placehold.co/380x380/png?text=Produto08",
-    },
-    {
-        nome: "Produto09",
-        imagem: "https://placehold.co/380x380/png?text=Produto09",
-    },
-];
+import Image, { StaticImageData } from "next/image";
 
 interface ICarouselInicio {
     titulo: string
@@ -52,11 +17,11 @@ interface ICarouselInicio {
 }
 
 interface lista {
-    imagem : string
+    imagem: string | StaticImageData
     nome: string
 }
 
-export function CarouselInicio(props:ICarouselInicio) {
+export function CarouselInicio(props: ICarouselInicio) {
     return (
         <section className="w-full">
             <h2 className="mb-6 mt-6 text-xl font-bold text-white">
@@ -70,7 +35,7 @@ export function CarouselInicio(props:ICarouselInicio) {
                 }}
                 className="w-full"
             >
-                <CarouselContent className="ml-4">
+                <CarouselContent className="">
                     {props.lista.map((produto) => (
                         <CarouselItem
                             key={produto.nome}
@@ -96,8 +61,33 @@ export function CarouselInicio(props:ICarouselInicio) {
                     ))}
                 </CarouselContent>
 
-                <CarouselPrevious className="left-2" />
-                <CarouselNext className="right-2" />
+                <CarouselPrevious
+                    className="
+                        left-1
+                        size-8
+                        border-none
+                        bg-white/30
+                        text-white
+                        hover:bg-primaria
+                        hover:text-black
+                        md:left-2
+                        md:size-9
+                    "
+                />
+
+                <CarouselNext
+                    className="
+                        right-1
+                        size-8
+                        border-none
+                        bg-white/30
+                        text-white
+                        hover:bg-primaria
+                        hover:text-black
+                        md:right-2
+                        md:size-9
+                    "
+                />
             </Carousel>
         </section>
     );
