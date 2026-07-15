@@ -7,6 +7,10 @@ import imgGeral from "../../../../public/cardGenero/geralCard.png"
 
 export const generoListagem = [
   {
+    nome: "Todos",
+    imagem: imgGeral,
+  },
+  {
     nome: "Rock",
     imagem: imgRock,
   },
@@ -25,9 +29,5 @@ export const generoListagem = [
   {
     nome: "Pop",
     imagem: imgPop,
-  },
-  {
-    nome: "Todos",
-    imagem: imgGeral,
   }
 ];
