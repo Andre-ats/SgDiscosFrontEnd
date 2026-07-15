@@ -55,7 +55,7 @@ export function CarouselImagesInicio() {
             <Carousel setApi={setApi} className="w-full">
                 <CarouselContent>
                     <CarouselItem>
-                        <div className="relative 2xl:h-125 xl:h-100 md:h-75 h-37.5 w-full overflow-hidden rounded-2xl">
+                        <div className="relative 2xl:h-100 xl:h-100 md:h-75 h-37.5 w-full overflow-hidden rounded-2xl">
                             <Image
                                 src={fundo01}
                                 alt="Banner SG Discos"
@@ -90,7 +90,7 @@ export function CarouselImagesInicio() {
                         </div>
                     </CarouselItem>
                     <CarouselItem>
-                        <div className="relative h-37.5 w-full overflow-hidden rounded-2xl md:h-75 xl:h-100 2xl:h-125">
+                        <div className="relative 2xl:h-100 xl:h-100 md:h-75 h-37.5 w-full overflow-hidden rounded-2xl">
                             <Image
                                 src={fundo02}
                                 alt="Entre em contato com a SG Discos"
@@ -105,7 +105,7 @@ export function CarouselImagesInicio() {
                                 <div className="w-fit max-w-full">
                                     <CardTitle className="md:mb-2 mb-1 flex items-center gap-2 whitespace-nowrap text-2xl font-bold tracking-tight md:text-4xl xl:text-7xl">
                                         <span>Fale com</span>
-                                        <span className="text-primaria">a gente!</span>
+                                        <span className="text-primaria ml-2">a gente!</span>
                                     </CardTitle>
 
                                     <CardDescription className="md:mt-3 mb-3 text-sm font-medium text-zinc-200 block md:text-lg xl:text-2xl">

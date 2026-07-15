@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/carousel";
 import Image, { StaticImageData } from "next/image";
 
-interface ICarouselInicio {
+interface ICarouselGenero {
     titulo: string
     lista: lista[]
     classQuadrado: string
@@ -21,7 +21,7 @@ interface lista {
     nome: string
 }
 
-export function CarouselInicio(props: ICarouselInicio) {
+export function CarouselGenero(props: ICarouselGenero) {
     return (
         <section className="w-full">
             <h2 className="mb-6 mt-6 text-xl font-bold text-white">
@@ -41,7 +41,7 @@ export function CarouselInicio(props: ICarouselInicio) {
                             key={produto.nome}
                             className={props.classQuadrado}
                         >
-                            <div className="group relative aspect-square w-full overflow-hidden rounded-xl">
+                            <div className="group relative aspect-square w-full overflow-hidden rounded-full">
                                 <Image
                                     src={produto.imagem}
                                     alt={produto.nome}
@@ -51,9 +51,9 @@ export function CarouselInicio(props: ICarouselInicio) {
                                     className="object-cover transition duration-300 group-hover:scale-105"
                                 />
 
-                                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent" />
+                                <div className="absolute inset-0 bg-black/80 rounded-l-xl" />
 
-                                <span className="absolute bottom-4 left-4 text-xl font-bold text-white">
+                                <span className="absolute inset-0 flex items-center justify-center text-xl font-bold text-white">
                                     {produto.nome}
                                 </span>
                             </div>
