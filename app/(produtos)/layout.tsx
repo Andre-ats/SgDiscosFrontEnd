@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { HeaderLayoutInicio } from "./component/layoutComponent/HeaderLayoutInicio";
 import Image from "next/image";
-import logoSgDiscos from "../../public/icon/logoSgDiscosSemEscrita.png"
+import logoSgDiscos from "../public/icon/logoSgDiscosSemEscrita.png"
 import { CardDescription } from "@/components/ui/card";
 import { FooterInicio } from "./component/layoutComponent/Footer";
 

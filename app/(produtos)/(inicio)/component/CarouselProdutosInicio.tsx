@@ -45,9 +45,14 @@ export function CarouselInicio(props: ICarouselInicio) {
         <Fragment>
             {produtos?.paginacaoOutput?.itens?.length! > 0 &&
                 <section className="w-full">
-                    <h2 className="mb-6 mt-6 text-xl font-bold text-white">
-                        {props.titulo}
-                    </h2>
+                    <div className="flex items-center justify-between mb-6 mt-6">
+                        <h2 className="text-xl font-bold text-white">
+                            {props.titulo}
+                        </h2>
+                        <p className="text-primaria">
+                            Ver todos
+                        </p>
+                    </div>
 
                     <Carousel
                         opts={{

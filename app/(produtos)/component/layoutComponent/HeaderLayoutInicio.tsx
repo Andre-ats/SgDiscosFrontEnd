@@ -30,7 +30,7 @@ export function HeaderLayoutInicio() {
             indice = (indice + 1) % placeholders.length;
 
             setPlaceholder(placeholders[indice]);
-        }, 5000);
+        }, 2500);
 
         return () => clearInterval(intervalo);
     }, []);

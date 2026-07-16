@@ -10,8 +10,8 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
-import fundo01 from "../../../public/banners/telaInicio/tela01Imagem.jpeg"
-import fundo02 from "../../../public/banners/telaInicio/tela02Imagem.jpeg"
+import fundo01 from "../../../../public/banners/telaInicio/tela01Imagem.jpeg"
+import fundo02 from "../../../../public/banners/telaInicio/tela02Imagem.jpeg"
 import { CardDescription, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Disc3Icon, MessageCircleIcon } from "lucide-react";
