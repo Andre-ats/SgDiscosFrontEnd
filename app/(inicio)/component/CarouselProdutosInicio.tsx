@@ -73,10 +73,6 @@ export function CarouselInicio(props: ICarouselInicio) {
                                         />
 
                                         <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent" />
-
-                                        <span className="text-xl font-bold text-white">
-                                            {produto.nomeArtistaBandaProduto}
-                                        </span>
                                     </div>
                                 </CarouselItem>
                             ))}
