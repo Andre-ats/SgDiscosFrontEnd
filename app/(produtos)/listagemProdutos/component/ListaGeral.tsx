@@ -1,16 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { FiltroListagemProdutos } from "./FiltroListagemProdutos";
-import { CardDescription, CardTitle } from "@/components/ui/card";
-import { ProdutosListagem } from "./ProdutosListagem";
 import { GetProdutos } from "@/api/produto/GetProduto";
 import {
     EnumFormatoProduto,
     EnumGeneroMusicalProduto,
     EnumStatusProduto,
+    IGetProdutosInput,
     IListagemProdutosResponse,
 } from "@/api/types/ProdutoType";
+import {
+    CardDescription,
+    CardTitle,
+} from "@/components/ui/card";
+import { useEffect, useState } from "react";
+import { FiltroListagemProdutos } from "./FiltroListagemProdutos";
+import { ProdutosListagem } from "./ProdutosListagem";
 
 export function ListaGeral() {
     const [produtos, setProdutos] =
@@ -27,12 +31,29 @@ export function ListaGeral() {
 
     useEffect(() => {
         async function carregarProdutos() {
-            const response = await GetProdutos();
-            setProdutos(response);
+            const filtros: IGetProdutosInput = {
+                paginaAtual: 1,
+                itensPorPagina: 20,
+                generoMusical: generoSelecionado,
+                formatoProduto: formatoSelecionado,
+                statusProduto: statusSelecionado,
+            };
+
+            try {
+                const response = await GetProdutos(filtros);
+
+                setProdutos(response);
+            } catch (error) {
+                console.error("Erro ao carregar produtos:", error);
+            }
         }
 
         carregarProdutos();
-    }, []);
+    }, [
+        generoSelecionado,
+        formatoSelecionado,
+        statusSelecionado,
+    ]);
 
     function limparFiltros() {
         setGeneroSelecionado(undefined);
@@ -65,12 +86,9 @@ export function ListaGeral() {
                     </CardDescription>
                 </div>
 
-                <ProdutosListagem
-                    produtos={produtos}
-                    generoSelecionado={generoSelecionado}
-                    statusSelecionado={statusSelecionado}
-                    formatoSelecionado={formatoSelecionado}
-                />
+                <div className="w-full">
+                    <ProdutosListagem produtos={produtos} />
+                </div>
             </div>
         </>
     );
