@@ -1,47 +1,102 @@
-'use client'
+"use client";
 
-import { GetProdutos } from "@/api/produto/GetProduto";
-import { EnumStatusProduto, IListagemProdutosResponse } from "@/api/types/ProdutoType";
+import {
+    EnumFormatoProduto,
+    EnumGeneroMusicalProduto,
+    EnumStatusProduto,
+    IListagemProdutosResponse,
+} from "@/api/types/ProdutoType";
 import { UrlImagem } from "@/api/UrlImagem";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Eye, MessageCircleMore, MessageCircleMoreIcon } from "lucide-react";
+import { Eye, MessageCircleMore } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { Fragment } from "react/jsx-runtime";
 
-export function ProdutosListagem() {
+interface ProdutosListagemProps {
+    produtos?: IListagemProdutosResponse;
+    generoSelecionado?: EnumGeneroMusicalProduto;
+    statusSelecionado?: EnumStatusProduto;
+    formatoSelecionado?: EnumFormatoProduto;
+}
 
-    const [produtos, setProdutos] = useState<IListagemProdutosResponse>();
+export function ProdutosListagem({
+    produtos,
+    generoSelecionado,
+    statusSelecionado,
+    formatoSelecionado,
+}: ProdutosListagemProps) {
+    const produtosFiltrados =
+        produtos?.paginacaoOutput.itens.filter((item) => {
+            if (item.statusProduto === EnumStatusProduto.Inativo) {
+                return false;
+            }
 
-    useEffect(() => {
-        async function carregarProdutos() {
-            const response = await GetProdutos();
+            if (
+                statusSelecionado &&
+                item.statusProduto !== statusSelecionado
+            ) {
+                return false;
+            }
 
-            setProdutos(response);
-        }
+            if (
+                formatoSelecionado &&
+                item.formatoProduto !== formatoSelecionado
+            ) {
+                return false;
+            }
 
-        carregarProdutos();
-    }, []);
+            if (
+                generoSelecionado &&
+                !item.generosMusicaisProduto?.includes(
+                    generoSelecionado
+                )
+            ) {
+                return false;
+            }
+
+            return true;
+        }) ?? [];
 
     return (
-        <Fragment>
-            <div className="grid grid-cols-5 w-full gap-3 mt-3">
-                {produtos?.paginacaoOutput.itens.map((item, key) => (
-                    <Card key={key} className="group overflow-hidden border-white/10 bg-fundoSecundaria transition duration-300 hover:-translate-y-1 hover:border-primaria/40 hover:shadow-lg hover:shadow-black/30">
+        <div className="mt-5 grid w-full grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+            {produtosFiltrados.map((item, index) => {
+                const arquivo = item.arquivosProdutos?.[0];
+
+                return (
+                    <Card
+                        key={item.id ?? index}
+                        className="group overflow-hidden border-white/10 bg-fundoSecundaria transition duration-300 hover:-translate-y-1 hover:border-primaria/40 hover:shadow-lg hover:shadow-black/30"
+                    >
                         <CardContent>
-                            <div className="group relative aspect-square w-full overflow-hidden rounded-xl">
-                                <Image
-                                    src={UrlImagem(item.arquivosProdutos[0].publicId, item.arquivosProdutos[0].tipoArquivoProduto)}
-                                    alt=""
-                                    fill
-                                />
+                            <div className="relative aspect-square w-full overflow-hidden rounded-xl">
+                                {arquivo ? (
+                                    <Image
+                                        src={UrlImagem(
+                                            arquivo.publicId,
+                                            arquivo.tipoArquivoProduto
+                                        )}
+                                        alt={item.nomeProduto}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                ) : (
+                                    <div className="flex h-full items-center justify-center text-sm text-gray-500">
+                                        Sem imagem
+                                    </div>
+                                )}
                             </div>
-                            <div className="mt-2 ">
+
+                            <div className="mt-2">
                                 <div className="min-w-0">
-                                    <p className="text-white truncate">{item.nomeProduto}</p>
-                                    <p className="text-gray-500 truncate">{item.nomeArtistaBandaProduto}</p>
+                                    <p className="truncate text-white">
+                                        {item.nomeProduto}
+                                    </p>
+
+                                    <p className="truncate text-gray-500">
+                                        {item.nomeArtistaBandaProduto}
+                                    </p>
                                 </div>
+
                                 <div className="mt-3">
                                     <p className="text-lg font-semibold text-primaria">
                                         {item.precoProduto.toLocaleString(
@@ -53,22 +108,30 @@ export function ProdutosListagem() {
                                         )}
                                     </p>
                                 </div>
-                                <div className="mt-2 flex items-center gap-2 justify-between">
-                                    {item.statusProduto === EnumStatusProduto.Ativo ? (
-                                        <p className="text-green-400 text-[11px] flex items-center gap-1">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-green-400"></span> Em estoque</p>
-                                    ) : item.statusProduto === EnumStatusProduto.Inativo ? (
-                                        <p className="text-red-500 text-[11px] flex items-center gap-2">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>Inativo</p>
-                                    ) : item.statusProduto === EnumStatusProduto.Esgotado ? (
-                                        <p className="text-red-500 text-[11px] flex items-center gap-2">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>Esgotado</p>
-                                    ) : item.statusProduto === EnumStatusProduto.EmBreve ? (
-                                        <p className="text-orange-400 text-[11px] flex items-center gap-2">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-orange-400"></span>Pré-venda</p>
+
+                                <div className="mt-2 flex items-center justify-between gap-2">
+                                    {item.statusProduto ===
+                                    EnumStatusProduto.Ativo ? (
+                                        <p className="flex items-center gap-1 text-[11px] text-green-400">
+                                            <span className="size-1.5 rounded-full bg-green-400" />
+                                            Em estoque
+                                        </p>
+                                    ) : item.statusProduto ===
+                                      EnumStatusProduto.Esgotado ? (
+                                        <p className="flex items-center gap-2 text-[11px] text-red-500">
+                                            <span className="size-1.5 rounded-full bg-red-500" />
+                                            Esgotado
+                                        </p>
+                                    ) : item.statusProduto ===
+                                      EnumStatusProduto.EmBreve ? (
+                                        <p className="flex items-center gap-2 text-[11px] text-orange-400">
+                                            <span className="size-1.5 rounded-full bg-orange-400" />
+                                            Pré-venda
+                                        </p>
                                     ) : (
                                         <p>{item.statusProduto}</p>
                                     )}
+
                                     <div className="flex shrink-0 gap-2">
                                         <Button
                                             variant="outline"
@@ -91,8 +154,8 @@ export function ProdutosListagem() {
                             </div>
                         </CardContent>
                     </Card>
-                ))}
-            </div>
-        </Fragment>
-    )
+                );
+            })}
+        </div>
+    );
 }
