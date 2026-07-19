@@ -11,20 +11,20 @@ import { RotateCcw } from "lucide-react";
 import { Dispatch, SetStateAction } from "react";
 
 interface FiltroListagemProdutosProps {
-    generoSelecionado: string | undefined;
-    setGeneroSelecionado: Dispatch<
-        SetStateAction<EnumGeneroMusicalProduto | undefined>
-    >;
+    generoSelecionado?: EnumGeneroMusicalProduto;
+    setGeneroSelecionado: (
+        genero?: EnumGeneroMusicalProduto
+    ) => void;
 
-    statusSelecionado: EnumStatusProduto | undefined;
-    setStatusSelecionado: Dispatch<
-        SetStateAction<EnumStatusProduto | undefined>
-    >;
+    statusSelecionado?: EnumStatusProduto;
+    setStatusSelecionado: (
+        status?: EnumStatusProduto
+    ) => void;
 
-    formatoSelecionado: EnumFormatoProduto | undefined;
-    setFormatoSelecionado: Dispatch<
-        SetStateAction<EnumFormatoProduto | undefined>
-    >;
+    formatoSelecionado?: EnumFormatoProduto;
+    setFormatoSelecionado: (
+        formato?: EnumFormatoProduto
+    ) => void;
 
     limparFiltros: () => void;
 }
@@ -80,20 +80,20 @@ export function FiltroListagemProdutos({
     limparFiltros,
 }: FiltroListagemProdutosProps) {
     function handleGenero(valor: EnumGeneroMusicalProduto) {
-        setGeneroSelecionado((atual) =>
-            atual === valor ? undefined : valor
+        setGeneroSelecionado(
+            generoSelecionado === valor ? undefined : valor
         );
     }
 
     function handleStatus(valor: EnumStatusProduto) {
-        setStatusSelecionado((atual) =>
-            atual === valor ? undefined : valor
+        setStatusSelecionado(
+            statusSelecionado === valor ? undefined : valor
         );
     }
 
     function handleFormato(valor: EnumFormatoProduto) {
-        setFormatoSelecionado((atual) =>
-            atual === valor ? undefined : valor
+        setFormatoSelecionado(
+            formatoSelecionado === valor ? undefined : valor
         );
     }
 
@@ -139,14 +139,14 @@ export function FiltroListagemProdutos({
                                     <Checkbox
                                         checked={generoSelecionado === item.valor}
                                         className="
-                    pointer-events-none
-                    border-gray-500
-                    transition-all
-                    data-checked:border-primaria
-                    data-checked:bg-primaria
-                    data-checked:text-black
-                    dark:data-checked:bg-primaria
-                "
+                                            pointer-events-none
+                                            border-gray-500
+                                            transition-all
+                                            data-checked:border-primaria
+                                            data-checked:bg-primaria
+                                            data-checked:text-black
+                                            dark:data-checked:bg-primaria
+                                        "
                                     />
 
                                     <p className="ml-3 text-sm text-gray-400 transition-colors group-hover:text-gray-200">

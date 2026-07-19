@@ -12,13 +12,12 @@ import {
     CardDescription,
     CardTitle,
 } from "@/components/ui/card";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FiltroListagemProdutos } from "./FiltroListagemProdutos";
 import { ProdutosListagem } from "./ProdutosListagem";
-import { useSearchParams } from "next/navigation";
 
 export function ListaGeral() {
-
     const searchParams = useSearchParams();
 
     const genero = searchParams.get("genero") as
@@ -27,6 +26,9 @@ export function ListaGeral() {
 
     const [produtos, setProdutos] =
         useState<IListagemProdutosResponse>();
+
+    const [paginaAtual, setPaginaAtual] = useState(1);
+    const [itensPorPagina, setItensPorPagina] = useState(20);
 
     const [generoSelecionado, setGeneroSelecionado] =
         useState<EnumGeneroMusicalProduto | undefined>(
@@ -42,8 +44,8 @@ export function ListaGeral() {
     useEffect(() => {
         async function carregarProdutos() {
             const filtros: IGetProdutosInput = {
-                paginaAtual: 1,
-                itensPorPagina: 20,
+                paginaAtual,
+                itensPorPagina,
                 generoMusical: generoSelecionado,
                 formatoProduto: formatoSelecionado,
                 statusProduto: statusSelecionado,
@@ -60,6 +62,8 @@ export function ListaGeral() {
 
         carregarProdutos();
     }, [
+        paginaAtual,
+        itensPorPagina,
         generoSelecionado,
         formatoSelecionado,
         statusSelecionado,
@@ -69,6 +73,28 @@ export function ListaGeral() {
         setGeneroSelecionado(undefined);
         setStatusSelecionado(undefined);
         setFormatoSelecionado(undefined);
+        setPaginaAtual(1);
+    }
+
+    function mudarGenero(
+        genero?: EnumGeneroMusicalProduto
+    ) {
+        setGeneroSelecionado(genero);
+        setPaginaAtual(1);
+    }
+
+    function mudarStatus(
+        status?: EnumStatusProduto
+    ) {
+        setStatusSelecionado(status);
+        setPaginaAtual(1);
+    }
+
+    function mudarFormato(
+        formato?: EnumFormatoProduto
+    ) {
+        setFormatoSelecionado(formato);
+        setPaginaAtual(1);
     }
 
     return (
@@ -76,11 +102,11 @@ export function ListaGeral() {
             <div className="w-1/4">
                 <FiltroListagemProdutos
                     generoSelecionado={generoSelecionado}
-                    setGeneroSelecionado={setGeneroSelecionado}
+                    setGeneroSelecionado={mudarGenero}
                     statusSelecionado={statusSelecionado}
-                    setStatusSelecionado={setStatusSelecionado}
+                    setStatusSelecionado={mudarStatus}
                     formatoSelecionado={formatoSelecionado}
-                    setFormatoSelecionado={setFormatoSelecionado}
+                    setFormatoSelecionado={mudarFormato}
                     limparFiltros={limparFiltros}
                 />
             </div>
@@ -96,9 +122,14 @@ export function ListaGeral() {
                     </CardDescription>
                 </div>
 
-                <div className="w-full">
-                    <ProdutosListagem produtos={produtos} />
-                </div>
+                <ProdutosListagem
+                    produtos={produtos}
+                    onMudarPagina={setPaginaAtual}
+                    onMudarItensPorPagina={(itens) => {
+                        setItensPorPagina(itens);
+                        setPaginaAtual(1);
+                    }}
+                />
             </div>
         </>
     );
