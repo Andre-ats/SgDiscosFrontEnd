@@ -11,6 +11,7 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image, { StaticImageData } from "next/image";
+import { useRouter } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 
 interface ICarouselInicio {
@@ -29,6 +30,7 @@ interface lista {
 
 export function CarouselInicio(props: ICarouselInicio) {
 
+    const router = useRouter();
     const [produtos, setProdutos] = useState<IListagemProdutosResponse>();
 
     useEffect(() => {
@@ -49,7 +51,7 @@ export function CarouselInicio(props: ICarouselInicio) {
                         <h2 className="text-xl font-bold text-white">
                             {props.titulo}
                         </h2>
-                        <p className="text-primaria">
+                        <p className="text-primaria cursor-pointer" onClick={()=>router.push("/listagemProdutos")}>
                             Ver todos
                         </p>
                     </div>

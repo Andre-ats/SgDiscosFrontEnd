@@ -4,6 +4,9 @@ import Image from "next/image";
 import logoSgDiscos from "../public/icon/logoSgDiscosSemEscrita.png"
 import { CardDescription } from "@/components/ui/card";
 import { FooterInicio } from "./component/layoutComponent/Footer";
+import { redirect } from "next/navigation";
+import Link from "next/link";
+import { LinksLayoutInicio } from "./component/layoutComponent/LinksLayoutInicio";
 
 export default function LayoutInicio({
     children,
@@ -21,11 +24,7 @@ export default function LayoutInicio({
             <main className="w-full">
                 <div className="w-full flex justify-center mt-4 pl-4">
                     <div className="w-3/4">
-                        <div className="flex flex-row gap-6">
-                            <p className="text-primaria border-b border-primaria">Início</p>
-                            <p className="text-white">Catálogo</p>
-                            <p className="text-white">Contato</p>
-                        </div>
+                        <LinksLayoutInicio/>
                     </div>
                 </div>
                 <div className="w-full p-5">
@@ -33,7 +32,7 @@ export default function LayoutInicio({
                 </div>
             </main>
             <div>
-                <FooterInicio/>
+                <FooterInicio />
             </div>
         </div>
     );

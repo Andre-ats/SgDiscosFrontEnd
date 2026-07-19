@@ -15,13 +15,23 @@ import {
 import { useEffect, useState } from "react";
 import { FiltroListagemProdutos } from "./FiltroListagemProdutos";
 import { ProdutosListagem } from "./ProdutosListagem";
+import { useSearchParams } from "next/navigation";
 
 export function ListaGeral() {
+
+    const searchParams = useSearchParams();
+
+    const genero = searchParams.get("genero") as
+        | EnumGeneroMusicalProduto
+        | null;
+
     const [produtos, setProdutos] =
         useState<IListagemProdutosResponse>();
 
     const [generoSelecionado, setGeneroSelecionado] =
-        useState<EnumGeneroMusicalProduto>();
+        useState<EnumGeneroMusicalProduto | undefined>(
+            genero ?? undefined
+        );
 
     const [statusSelecionado, setStatusSelecionado] =
         useState<EnumStatusProduto>();

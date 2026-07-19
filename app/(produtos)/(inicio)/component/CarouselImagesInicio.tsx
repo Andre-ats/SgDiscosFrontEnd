@@ -9,17 +9,22 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import fundo01 from "../../../../public/banners/telaInicio/tela01Imagem.jpeg"
 import fundo02 from "../../../../public/banners/telaInicio/tela02Imagem.jpeg"
 import { CardDescription, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Disc3Icon, MessageCircleIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 
 export function CarouselImagesInicio() {
+
+    const router = useRouter();
+
     const [api, setApi] = useState<CarouselApi>();
     const [imagemAtual, setImagemAtual] = useState(0);
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
         if (!api) return;
@@ -39,14 +44,35 @@ export function CarouselImagesInicio() {
     useEffect(() => {
         if (!api) return;
 
-        const intervalo = setInterval(() => {
-            const proximoSlide =
-                api.selectedScrollSnap() === 0 ? 1 : 0;
+        function iniciarContagem() {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
 
-            api.scrollTo(proximoSlide);
-        }, 5000);
+            timeoutRef.current = setTimeout(() => {
+                const slideAtual = api!.selectedScrollSnap();
+                const totalSlides = api!.scrollSnapList().length;
 
-        return () => clearInterval(intervalo);
+                const proximoSlide =
+                    slideAtual === totalSlides - 1
+                        ? 0
+                        : slideAtual + 1;
+
+                api!.scrollTo(proximoSlide);
+            }, 5000);
+        }
+
+        iniciarContagem();
+
+        api.on("select", iniciarContagem);
+
+        return () => {
+            api.off("select", iniciarContagem);
+
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
+        };
     }, [api]);
 
 
@@ -82,7 +108,7 @@ export function CarouselImagesInicio() {
                                         perfeito para a sua coleção.
                                     </CardDescription>
 
-                                    <Button className="rounded-lg bg-primaria hover:bg-[#ffcf0d] px-4 py-2 text-sm font-semibold text-black transition hover:brightness-110 md:px-6 md:py-5 md:text-base">
+                                    <Button onClick={() => router.push("/listagemProdutos")} className="cursor-pointer rounded-lg bg-primaria hover:bg-[#ffcf0d] px-4 py-2 text-sm font-semibold text-black transition hover:brightness-110 md:px-6 md:py-5 md:text-base">
                                         <Disc3Icon /> Explorar catálogo
                                     </Button>
                                 </div>

@@ -29,7 +29,7 @@ export function ProdutosListagem({
 
     if (itens.length === 0) {
         return (
-            <div className="mt-5 flex min-h-[420px] w-full flex-col items-center justify-center rounded-2xl border border-dashed border-white/10 bg-fundoSecundaria px-6 text-center">
+            <div className="mt-5 flex min-h-105 w-full flex-col items-center justify-center rounded-2xl border border-dashed border-white/10 bg-fundoSecundaria px-6 text-center">
                 <div className="flex size-20 items-center justify-center rounded-full bg-white/5">
                     <PackageSearch
                         size={38}

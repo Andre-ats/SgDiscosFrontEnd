@@ -1,3 +1,6 @@
+'use client'
+
+import { EnumGeneroMusicalProduto } from "@/api/types/ProdutoType";
 import {
     Carousel,
     CarouselContent,
@@ -6,6 +9,7 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image, { StaticImageData } from "next/image";
+import { useRouter } from "next/navigation";
 
 interface ICarouselGenero {
     titulo: string
@@ -19,9 +23,13 @@ interface ICarouselGenero {
 interface lista {
     imagem: string | StaticImageData
     nome: string
+    link?: EnumGeneroMusicalProduto
 }
 
 export function CarouselGenero(props: ICarouselGenero) {
+    
+    const router = useRouter();
+
     return (
         <section className="w-full">
             <h2 className="mb-6 mt-6 text-xl font-bold text-white">
@@ -40,6 +48,7 @@ export function CarouselGenero(props: ICarouselGenero) {
                         <CarouselItem
                             key={produto.nome}
                             className={props.classQuadrado}
+                            onClick={()=>router.push(`listagemProdutos${produto.link != undefined ? `?genero=${produto.link}` : "" }`)}
                         >
                             <div className="group relative aspect-square w-full overflow-hidden rounded-full">
                                 <Image
