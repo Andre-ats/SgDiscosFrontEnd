@@ -114,11 +114,11 @@ export function ListaGeral() {
             <div className="w-3/4">
                 <div className="w-full">
                     <CardTitle className="text-3xl text-white">
-                        Vinis
+                        Catálogo
                     </CardTitle>
 
                     <CardDescription className="mt-2 text-sm text-gray-400">
-                        Encontre os melhores discos de vinil para a sua coleção
+                        Encontre os melhores produtos para a sua coleção em nosso catálogo!
                     </CardDescription>
                 </div>
 
