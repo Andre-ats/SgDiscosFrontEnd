@@ -143,7 +143,7 @@ export function CarouselImagesInicio() {
                                         pedidos e produtos.
                                     </CardDescription>
 
-                                    <Button className="rounded-lg bg-primaria px-4 py-2 text-sm font-semibold text-black transition hover:bg-[#ffcf0d] hover:brightness-110 md:px-6 md:py-5 md:text-base">
+                                    <Button onClick={() => router.push("/contato")} className="cursor-pointer rounded-lg bg-primaria px-4 py-2 text-sm font-semibold text-black transition hover:bg-[#ffcf0d] hover:brightness-110 md:px-6 md:py-5 md:text-base">
                                         <MessageCircleIcon />
                                         Entrar em contato
                                     </Button>

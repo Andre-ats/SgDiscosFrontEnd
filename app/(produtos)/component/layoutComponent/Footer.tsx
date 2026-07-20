@@ -69,10 +69,24 @@ export function FooterInicio() {
                         <h2 className="text-primaria font-semibold uppercase">
                             Navegação
                         </h2>
-
-                        <p className="text-gray-400 hover:text-white cursor-pointer">Início</p>
-                        <p className="text-gray-400 hover:text-white cursor-pointer">Catálogo</p>
-                        <p className="text-gray-400 hover:text-white cursor-pointer">Contato</p>
+                        <Link
+                            href="/"
+                            rel="noopener noreferrer"
+                        >
+                            <p className="text-gray-400 hover:text-white cursor-pointer">Início</p>
+                        </Link>
+                        <Link
+                            href="/listagemProdutos"
+                            rel="noopener noreferrer"
+                        >
+                            <p className="text-gray-400 hover:text-white cursor-pointer">Catálogo</p>
+                        </Link>
+                        <Link
+                            href="/contato"
+                            rel="noopener noreferrer"
+                        >
+                            <p className="text-gray-400 hover:text-white cursor-pointer">Contato</p>
+                        </Link>
                     </div>
 
                     {/* Atendimento */}
