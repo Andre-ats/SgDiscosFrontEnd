@@ -83,7 +83,7 @@ export function FooterInicio() {
                             <div>
                                 <p className="text-white">(11) 95304-1603</p>
                                 <p className="text-gray-500 text-sm">
-                                    Seg a Dom, 9h às 18h
+                                    Todos os Dias, 9h às 18h
                                 </p>
                             </div>
                         </div>

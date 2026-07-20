@@ -98,7 +98,7 @@ export function FiltroListagemProdutos({
     }
 
     return (
-        <Card className="mr-10 overflow-hidden rounded-2xl border border-[#2A2F3A] bg-fundoTerciaria px-4 shadow-lg shadow-black/20">
+        <Card className="mr-10 overflow-hidden rounded-2xl border border-[#2A2F3A] bg-fundoTerciaria px-4 shadow-lg shadow-black/20 pb-18">
             <CardHeader className="flex flex-row items-center justify-between border-b border-[#2A2F3A] px-1 py-5">
                 <p className="text-lg font-semibold tracking-wide text-white">
                     Filtros
