@@ -59,7 +59,7 @@ const status = [
         cor: "bg-green-400",
     },
     {
-        valor: EnumStatusProduto.EmBreve,
+        valor: EnumStatusProduto.PreVenda,
         status: "Pré-venda",
         cor: "bg-orange-400",
     },

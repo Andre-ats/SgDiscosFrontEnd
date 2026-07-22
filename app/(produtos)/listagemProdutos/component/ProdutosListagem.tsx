@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { PaginacaoProdutos } from "./PaginacaoProdutos";
+import Link from "next/link";
 
 interface ProdutosListagemProps {
     produtos?: IListagemProdutosResponse;
@@ -122,7 +123,7 @@ export function ProdutosListagem({
                                             Esgotado
                                         </p>
                                     ) : item.statusProduto ===
-                                        EnumStatusProduto.EmBreve ? (
+                                        EnumStatusProduto.PreVenda ? (
                                         <p className="flex items-center gap-2 text-[11px] text-orange-400">
                                             <span className="size-1.5 rounded-full bg-orange-400" />
 
@@ -135,14 +136,16 @@ export function ProdutosListagem({
                                     )}
 
                                     <div className="flex shrink-0 gap-2">
-                                        <Button
-                                            variant="outline"
-                                            size="icon"
-                                            aria-label={`Visualizar ${item.nomeProduto}`}
-                                            className="size-9 border-white/15 bg-transparent text-white hover:border-primaria hover:bg-primaria/10 hover:text-primaria"
-                                        >
-                                            <Eye size={17} />
-                                        </Button>
+                                        <Link href={`/produtoVisualizar/${item.id}`}>
+                                            <Button
+                                                variant="outline"
+                                                size="icon"
+                                                aria-label={`Visualizar ${item.nomeProduto}`}
+                                                className="size-9 border-white/15 bg-transparent text-white hover:border-primaria hover:bg-primaria/10 hover:text-primaria"
+                                            >
+                                                <Eye />
+                                            </Button>
+                                        </Link>
 
                                         <Button
                                             size="icon"
