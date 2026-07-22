@@ -141,7 +141,7 @@ export function ProdutosListagem({
                                                 variant="outline"
                                                 size="icon"
                                                 aria-label={`Visualizar ${item.nomeProduto}`}
-                                                className="size-9 border-white/15 bg-transparent text-white hover:border-primaria hover:bg-primaria/10 hover:text-primaria"
+                                                className="cursor-pointer size-9 border-white/15 bg-transparent text-white hover:border-primaria hover:bg-primaria/10 hover:text-primaria"
                                             >
                                                 <Eye />
                                             </Button>

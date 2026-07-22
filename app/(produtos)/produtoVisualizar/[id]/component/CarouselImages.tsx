@@ -62,6 +62,36 @@ export function CarouselImages({ arquivos = [] }: ICarouselImages) {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
+                <CarouselPrevious
+                    className="
+                        sm:hidden
+                        left-3
+                        size-8
+                        border-none
+                        bg-black/60
+                        text-white
+                        hover:bg-primaria
+                        hover:text-black
+                        md:left-5
+                        md:size-9
+                    "
+                />
+
+                <CarouselNext
+                    className="
+                        sm:hidden
+                        sm:right-3
+                        right-48
+                        size-8
+                        border-none
+                        bg-black/60
+                        text-white
+                        hover:bg-primaria
+                        hover:text-black
+                        md:right-5
+                        md:size-9
+                    "
+                />
             </Carousel>
 
             <Carousel className="mt-4 w-95 sm:block hidden">
