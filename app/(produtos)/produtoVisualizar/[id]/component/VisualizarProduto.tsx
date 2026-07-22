@@ -1,7 +1,7 @@
 "use client"
 
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Fragment } from "react/jsx-runtime";
 import { VisualizacaoPrincipal } from "./VisualizacaoPrincipal";
@@ -10,11 +10,14 @@ import { Field, FieldTitle } from "@/components/ui/field";
 import { InformacoesGerais } from "./InformacoesGerais";
 import { IProduto } from "@/api/types/ProdutoType";
 import { getProdutoById } from "@/api/produto/GetProdutoById";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
 
 export function VisualizarProduto() {
 
     const { id } = useParams();
     const [produto, setProduto] = useState<IProduto>()
+    const router = useRouter();
 
     useEffect(() => {
         getProdutosByIdHandler()
@@ -24,13 +27,18 @@ export function VisualizarProduto() {
         setProduto(await getProdutoById(id as string))
     }
 
-    console.log(produto)
-
     return (
         <Fragment>
             <div className="flex w-full justify-center bg-fundoPrimaria">
                 <div className="flex w-3/4 flex-row">
                     <div>
+                        <Button
+                            onClick={() => router.back()}
+                            className="cursor-pointer flex bg-primaria items-center gap-2 text-black hover:bg-[#ffcf0d]"
+                        >
+                            <ArrowLeft size={18} />
+                            Voltar
+                        </Button>
                         <div className="w-full flex lg:flex-row flex-col gap-5 mt-4">
                             <div className="lg:w-3/5 w-full">
                                 <VisualizacaoPrincipal produtos={produto} />
