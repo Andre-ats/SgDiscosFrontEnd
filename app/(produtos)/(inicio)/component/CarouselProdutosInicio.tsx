@@ -11,6 +11,7 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 
@@ -51,7 +52,7 @@ export function CarouselInicio(props: ICarouselInicio) {
                         <h2 className="text-xl font-bold text-white">
                             {props.titulo}
                         </h2>
-                        <p className="text-primaria cursor-pointer" onClick={()=>router.push("/listagemProdutos")}>
+                        <p className="text-primaria cursor-pointer" onClick={() => router.push("/listagemProdutos")}>
                             Ver todos
                         </p>
                     </div>
@@ -69,18 +70,21 @@ export function CarouselInicio(props: ICarouselInicio) {
                                     key={key}
                                     className={props.classQuadrado}
                                 >
-                                    <div className="group relative aspect-square w-full overflow-hidden rounded-xl">
-                                        <Image
-                                            src={UrlImagem(produto.arquivosProdutos[0].publicId, produto.arquivosProdutos[0].tipoArquivoProduto)}
-                                            alt={produto.nomeProduto}
-                                            width={props.widthImage}
-                                            height={props.heightImage}
-                                            fill={props.fill}
-                                            className="object-cover transition duration-300 group-hover:scale-105"
-                                        />
+                                    <Link href={`/produtoVisualizar/${produto.id}`}>
+                                        <div className="group relative aspect-square w-full overflow-hidden rounded-xl">
+                                            <Image
+                                                src={UrlImagem(produto.arquivosProdutos[0].publicId, produto.arquivosProdutos[0].tipoArquivoProduto)}
+                                                alt={produto.nomeProduto}
+                                                width={props.widthImage}
+                                                height={props.heightImage}
+                                                fill={props.fill}
+                                                className="object-cover transition duration-300 group-hover:scale-105"
+                                            />
 
-                                        <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent" />
-                                    </div>
+                                            <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent" />
+                                        </div>
+
+                                    </Link>
                                 </CarouselItem>
                             ))}
                         </CarouselContent>

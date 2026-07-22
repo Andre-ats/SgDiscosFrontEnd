@@ -24,6 +24,8 @@ export function ListaGeral() {
         | EnumGeneroMusicalProduto
         | null;
 
+    const barraBusca = searchParams.get("barraBusca") ?? "";
+
     const [produtos, setProdutos] =
         useState<IListagemProdutosResponse>();
 
@@ -46,6 +48,7 @@ export function ListaGeral() {
             const filtros: IGetProdutosInput = {
                 paginaAtual,
                 itensPorPagina,
+                nomeProduto: barraBusca,
                 generoMusical: generoSelecionado,
                 formatoProduto: formatoSelecionado,
                 statusProduto: statusSelecionado,
@@ -67,6 +70,7 @@ export function ListaGeral() {
         generoSelecionado,
         formatoSelecionado,
         statusSelecionado,
+        barraBusca
     ]);
 
     function limparFiltros() {

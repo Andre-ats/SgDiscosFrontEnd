@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
     Eye,
-    MessageCircleMore,
+    Mail,
     PackageSearch,
 } from "lucide-react";
 import Image from "next/image";
@@ -147,15 +147,17 @@ export function ProdutosListagem({
                                             </Button>
                                         </Link>
 
-                                        <Button
-                                            size="icon"
-                                            aria-label={`Consultar ${item.nomeProduto} pelo WhatsApp`}
-                                            className="size-9 bg-primaria text-black hover:bg-primaria/80"
-                                        >
-                                            <MessageCircleMore
-                                                size={17}
-                                            />
-                                        </Button>
+                                        <Link href={`/email?id=${item.id}&nomeProduto=${item.nomeProduto}&nomeArtistaBanda=${item.nomeArtistaBandaProduto}`}>
+                                            <Button
+                                                size="icon"
+                                                aria-label={`Consultar ${item.nomeProduto} pelo WhatsApp`}
+                                                className="cursor-pointer size-9 bg-primaria text-black hover:bg-primaria/80"
+                                            >
+                                                <Mail
+                                                    size={17}
+                                                />
+                                            </Button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

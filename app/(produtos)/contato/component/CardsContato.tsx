@@ -60,12 +60,14 @@ export function CardsContato() {
                             <div className="mx-auto h-0.5 w-full bg-fundoTerciaria my-5"></div>
                             <p className="text-primaria text-lg text-center">vendas@gascomercio.com.br</p>
                             <div className="mt-5 flex justify-center">
-                                <Button className="p-7 bg-primaria hover:bg-primaria cursor-pointer">
-                                    <Mail color="black" />
-                                    <p className="text-black">
-                                        Enviar e-mail
-                                    </p>
-                                </Button>
+                                <Link href={`/email`}>
+                                    <Button className="p-7 bg-primaria hover:bg-primaria cursor-pointer">
+                                        <Mail color="black" />
+                                        <p className="text-black">
+                                            Enviar e-mail
+                                        </p>
+                                    </Button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -74,7 +76,7 @@ export function CardsContato() {
                 <Card className="bg-fundoSecundaria p-15">
                     <CardHeader className="flex justify-center">
                         <div className="border border-fundoTerciaria p-3 rounded-full bg-fundoTerciaria">
-                            <Clock color="#fcda54" height={50} width={50}/>
+                            <Clock color="#fcda54" height={50} width={50} />
                         </div>
                     </CardHeader>
                     <div className="flex justify-center">

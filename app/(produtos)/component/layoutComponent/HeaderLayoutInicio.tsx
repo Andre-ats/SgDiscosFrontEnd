@@ -8,6 +8,9 @@ import { Fragment } from "react/jsx-runtime";
 import logoSgDiscos from "../../../../public/icon/logoSgDiscosSemEscrita.png"
 import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const placeholders = [
     "Back in Black...",
@@ -21,7 +24,21 @@ const placeholders = [
 
 export function HeaderLayoutInicio() {
 
+    const [barraDePesquisa, setBarraDePesquisa] = useState("")
+
     const [placeholder, setPlaceholder] = useState(placeholders[0]);
+
+    const router = useRouter();
+
+    function handleBuscar() {
+        const busca = barraDePesquisa.trim();
+
+        router.push(
+            busca
+                ? `/listagemProdutos?barraBusca=${encodeURIComponent(busca)}`
+                : "/listagemProdutos"
+        );
+    }
 
     useEffect(() => {
         let indice = 0;
@@ -58,16 +75,27 @@ export function HeaderLayoutInicio() {
                     <Field className="w-1/2">
                         <InputGroup className="border-[#2A2F3A]">
                             <InputGroupInput
-                                //value={nomeProduto}
-                                //onChange={(e) => setNomeProduto(e.target.value)}
+                                value={barraDePesquisa}
+                                onChange={(e) => setBarraDePesquisa(e.target.value)}
+                                onKeyDown={(e) => {
+                                    if (e.key === "Enter") {
+                                        e.preventDefault();
+                                        handleBuscar();
+                                    }
+                                }}
                                 className="text-white border-[#2A2F3A]"
                                 type="text"
                                 placeholder={placeholder}
                                 required
                             />
-                            <div className="pr-2">
-                                <Search color="#2A2F3A" width={20} height={20}/>
-                            </div>
+                            <Button
+                                type="button"
+                                onClick={handleBuscar}
+                                className="bg-primaria text-black hover:bg-[#ffcf0d]"
+                            >
+                                Buscar
+                                <Search />
+                            </Button>
                         </InputGroup>
                     </Field>
                 </div>

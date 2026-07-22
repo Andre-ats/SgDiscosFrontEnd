@@ -8,6 +8,7 @@ import { InputGroup, InputGroupInput } from "@/components/ui/input-group";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Send } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { Fragment } from "react/jsx-runtime";
 import { toast } from "sonner";
@@ -34,11 +35,17 @@ export const descricaoAssuntoEmail: Record<EnumAssuntoEmail, string> = {
 
 export function CardEnviarEmail() {
 
+    const searchParams = useSearchParams();
+
+    const id = searchParams.get("id");
+    const nomeProduto = searchParams.get("nomeProduto");
+    const nomeArtistaBanda = searchParams.get("nomeArtistaBanda");
+
     const para = "vendas@gascomercio.com.br"
     const [seuEmail, setSeuEmail] = useState("")
     const [assuntoEmail, setAssuntoEmail] =
         useState<EnumAssuntoEmail | "">("");
-    const [produto, setProduto] = useState("")
+    const [produto, setProduto] = useState(`${id ? nomeArtistaBanda + " - " + nomeProduto : ""}`)
     const [mensagem, setMensagem] = useState("")
     const [loading, setLoading] = useState(false)
 
@@ -166,14 +173,10 @@ export function CardEnviarEmail() {
                                     className="text-white border-[#2A2F3A]"
                                     onChange={(e) => setProduto(e.target.value)}
                                     type="text"
-                                    placeholder="Ex.: AC/DC - Back in Black"
+                                    placeholder="Nome do produto..."
                                     required
                                 />
                             </InputGroup>
-
-                            <p className="text-gray-400 text-[13px] mt-2">
-                                Nome do produto
-                            </p>
                         </div>
                     </div>
                     <div>
