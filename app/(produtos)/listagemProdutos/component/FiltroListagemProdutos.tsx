@@ -264,12 +264,12 @@ export function FiltroListagemProdutos({
     return (
         <>
             {/* Desktop */}
-            <Card className="mr-10 hidden overflow-hidden rounded-2xl border border-[#2A2F3A] bg-fundoTerciaria px-4 pb-18 shadow-lg shadow-black/20 lg:block">
+            <Card className="mr-10 hidden overflow-hidden rounded-2xl border border-[#2A2F3A] bg-fundoTerciaria px-4 pb-18 shadow-lg shadow-black/20 xl:block">
                 <ConteudoFiltro />
             </Card>
 
             {/* Botão mobile/tablet */}
-            <div className="w-full lg:hidden">
+            <div className="w-full xl:hidden">
                 <Button
                     type="button"
                     onClick={() => setFiltroAberto(true)}
@@ -292,7 +292,7 @@ export function FiltroListagemProdutos({
                     type="button"
                     aria-label="Fechar filtros"
                     onClick={() => setFiltroAberto(false)}
-                    className="fixed inset-0 z-40 cursor-default bg-black/70 backdrop-blur-[2px] lg:hidden"
+                    className="fixed inset-0 z-40 cursor-default bg-black/70 backdrop-blur-[2px] xl:hidden"
                 />
             )}
 
@@ -307,7 +307,7 @@ export function FiltroListagemProdutos({
                     px-4
                     shadow-2xl shadow-black
                     transition-transform duration-300
-                    lg:hidden
+                    xl:hidden
                     ${filtroAberto
                         ? "translate-x-0"
                         : "-translate-x-full"

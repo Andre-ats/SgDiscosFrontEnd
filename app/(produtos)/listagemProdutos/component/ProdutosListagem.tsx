@@ -58,7 +58,7 @@ export function ProdutosListagem({
 
     return (
         <div className="mt-5 w-full">
-            <div className="grid w-full grid-cols-2 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+            <div className="grid w-full grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
                 {itens.map((item) => (
                     <Card
                         key={item.id}
@@ -107,7 +107,7 @@ export function ProdutosListagem({
                                     - {item.formatoProduto}
                                 </p>
 
-                                <div className="mt-2 flex items-center justify-between gap-2">
+                                <div className="mt-2 sm:flex items-center justify-between gap-2">
                                     {item.statusProduto ===
                                         EnumStatusProduto.Ativo ? (
                                         <p className="flex items-center gap-1 text-[11px] text-green-400">
@@ -135,7 +135,7 @@ export function ProdutosListagem({
                                         </p>
                                     )}
 
-                                    <div className="flex shrink-0 gap-2">
+                                    <div className="flex shrink-0 gap-2 mt-2 sm:m-0">
                                         <Link href={`/produtoVisualizar/${item.id}`}>
                                             <Button
                                                 variant="outline"

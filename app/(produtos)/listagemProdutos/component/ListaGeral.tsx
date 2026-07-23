@@ -102,9 +102,9 @@ export function ListaGeral() {
     }
 
     return (
-        <div className="flex w-full flex-col lg:flex-row">
+        <div className="flex w-full flex-col xl:flex-row">
             {/* Filtro desktop */}
-            <div className="hidden w-1/4 lg:block">
+            <div className="hidden xl:w-1/4 xl:block">
                 <FiltroListagemProdutos
                     generoSelecionado={generoSelecionado}
                     setGeneroSelecionado={mudarGenero}
@@ -116,7 +116,7 @@ export function ListaGeral() {
                 />
             </div>
 
-            <div className="w-full lg:w-3/4">
+            <div className="w-full xl:w-3/4">
                 <div className="mb-6">
                     <CardTitle className="text-3xl text-white">
                         Catálogo
@@ -128,7 +128,7 @@ export function ListaGeral() {
                     </CardDescription>
 
                     {/* Botão do filtro mobile */}
-                    <div className="mt-4 lg:hidden w-full">
+                    <div className="mt-4 xl:hidden w-full">
                         <FiltroListagemProdutos
                             generoSelecionado={generoSelecionado}
                             setGeneroSelecionado={mudarGenero}
