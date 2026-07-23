@@ -110,14 +110,14 @@ export function FiltroListagemProdutos({
         return (
             <>
                 <CardHeader className="flex flex-row items-center justify-between border-b border-[#2A2F3A] px-1 py-5">
-                    <p className="text-lg font-semibold tracking-wide text-white">
+                    <p className="text-lg font-semibold tracking-wide text-white mb-3">
                         Filtros
                     </p>
 
                     <button
                         type="button"
                         onClick={limparFiltros}
-                        className="group flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 transition-colors hover:bg-primaria/10"
+                        className="group flex cursor-pointer items-center gap-2 rounded-md px-2 mb-3 py-1.5 transition-colors hover:bg-primaria/10"
                     >
                         <RotateCcw
                             width={15}

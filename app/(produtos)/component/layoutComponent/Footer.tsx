@@ -33,20 +33,30 @@ export function FooterInicio() {
                         </div>
 
                         <div className="flex gap-3 mt-6 text-gray-400 w-fit">
-                            <div className="border border-gray-500 p-2 rounded-full cursor-pointer transition hover:border-primaria hover:bg-primaria/10">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF" width="25px" height="25px" viewBox="0 0 32 32" id="Camada_1" version="1.1">
-                                    <g>
-                                        <path d="M22.3,8.4c-0.8,0-1.4,0.6-1.4,1.4c0,0.8,0.6,1.4,1.4,1.4c0.8,0,1.4-0.6,1.4-1.4C23.7,9,23.1,8.4,22.3,8.4z" />
-                                        <path d="M16,10.2c-3.3,0-5.9,2.7-5.9,5.9s2.7,5.9,5.9,5.9s5.9-2.7,5.9-5.9S19.3,10.2,16,10.2z M16,19.9c-2.1,0-3.8-1.7-3.8-3.8   c0-2.1,1.7-3.8,3.8-3.8c2.1,0,3.8,1.7,3.8,3.8C19.8,18.2,18.1,19.9,16,19.9z" />
-                                        <path d="M20.8,4h-9.5C7.2,4,4,7.2,4,11.2v9.5c0,4,3.2,7.2,7.2,7.2h9.5c4,0,7.2-3.2,7.2-7.2v-9.5C28,7.2,24.8,4,20.8,4z M25.7,20.8   c0,2.7-2.2,5-5,5h-9.5c-2.7,0-5-2.2-5-5v-9.5c0-2.7,2.2-5,5-5h9.5c2.7,0,5,2.2,5,5V20.8z" />
-                                    </g>
-                                </svg>
-                            </div>
-                            <div className="flex gap-3">
+                            <Link
+                                href="https://www.instagram.com/sgdiscosbr"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
                                 <div className="border border-gray-500 p-2 rounded-full cursor-pointer transition hover:border-primaria hover:bg-primaria/10">
-                                    <MailIcon size={25} className="text-white" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="#FFFFFF" width="25px" height="25px" viewBox="0 0 32 32" id="Camada_1" version="1.1">
+                                        <g>
+                                            <path d="M22.3,8.4c-0.8,0-1.4,0.6-1.4,1.4c0,0.8,0.6,1.4,1.4,1.4c0.8,0,1.4-0.6,1.4-1.4C23.7,9,23.1,8.4,22.3,8.4z" />
+                                            <path d="M16,10.2c-3.3,0-5.9,2.7-5.9,5.9s2.7,5.9,5.9,5.9s5.9-2.7,5.9-5.9S19.3,10.2,16,10.2z M16,19.9c-2.1,0-3.8-1.7-3.8-3.8   c0-2.1,1.7-3.8,3.8-3.8c2.1,0,3.8,1.7,3.8,3.8C19.8,18.2,18.1,19.9,16,19.9z" />
+                                            <path d="M20.8,4h-9.5C7.2,4,4,7.2,4,11.2v9.5c0,4,3.2,7.2,7.2,7.2h9.5c4,0,7.2-3.2,7.2-7.2v-9.5C28,7.2,24.8,4,20.8,4z M25.7,20.8   c0,2.7-2.2,5-5,5h-9.5c-2.7,0-5-2.2-5-5v-9.5c0-2.7,2.2-5,5-5h9.5c2.7,0,5,2.2,5,5V20.8z" />
+                                        </g>
+                                    </svg>
                                 </div>
-
+                            </Link>
+                            <div className="flex gap-3">
+                                <Link
+                                    href="/email"
+                                    rel="noopener noreferrer"
+                                >
+                                    <div className="border border-gray-500 p-2 rounded-full cursor-pointer transition hover:border-primaria hover:bg-primaria/10">
+                                        <MailIcon size={25} className="text-white" />
+                                    </div>
+                                </Link>
                                 <Link
                                     href="https://wa.me/5511953041603"
                                     target="_blank"
