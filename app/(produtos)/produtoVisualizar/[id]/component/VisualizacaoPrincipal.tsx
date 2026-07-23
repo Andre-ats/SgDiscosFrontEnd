@@ -13,7 +13,7 @@ export function VisualizacaoPrincipal(props: IVisualizacaoPrincipal) {
     return (
         <Fragment>
             <Card className="grid h-full gap-8 bg-fundoTerciaria p-6 2xl:grid-cols-[420px_1fr]">
-                <CarouselImages arquivos={props.produtos?.arquivosProdutos} />
+                <CarouselImages arquivos={props.produtos?.arquivosProdutos} produtos={props.produtos}/>
                 <div className="flex w-full flex-row items-stretch gap-5">
                     <Field>
                         <div className="mb-4 flex items-center gap-3">
