@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
 import { InputGroup, InputGroupInput } from "@/components/ui/input-group";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowLeft, Mail, Send } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -93,6 +94,16 @@ export function CardEnviarEmail() {
 
     return (
         <Fragment>
+            {loading &&
+                <Fragment>
+                    <div className="fixed inset-0 z-50 bg-black/60" />
+
+                    <Spinner
+                        color="white"
+                        className="fixed left-1/2 top-1/2 z-60 h-10 w-10 -translate-x-1/2 -translate-y-1/2"
+                    />
+                </Fragment>
+            }
             <Card className="bg-fundoSecundaria w-full py-5 md:p-10">
                 <CardContent>
                     <div className="md:flex items-center gap-10 border-b border-fundoTerciaria pb-5">
