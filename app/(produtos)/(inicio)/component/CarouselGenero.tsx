@@ -27,7 +27,7 @@ interface lista {
 }
 
 export function CarouselGenero(props: ICarouselGenero) {
-    
+
     const router = useRouter();
 
     return (
@@ -48,7 +48,7 @@ export function CarouselGenero(props: ICarouselGenero) {
                         <CarouselItem
                             key={produto.nome}
                             className={props.classQuadrado}
-                            onClick={()=>router.push(`listagemProdutos${produto.link != undefined ? `?genero=${produto.link}` : "" }`)}
+                            onClick={() => router.push(`listagemProdutos${produto.link != undefined ? `?genero=${produto.link}` : ""}`)}
                         >
                             <div className="group relative aspect-square w-full overflow-hidden rounded-full">
                                 <Image
@@ -69,6 +69,33 @@ export function CarouselGenero(props: ICarouselGenero) {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
+                <CarouselPrevious
+                    className="
+                        left-1
+                        size-8
+                        border-none
+                        bg-white/30
+                        text-white
+                        hover:bg-primaria
+                        hover:text-black
+                        md:left-2
+                        md:size-9
+                    "
+                />
+
+                <CarouselNext
+                    className="
+                        right-1
+                        size-8
+                        border-none
+                        bg-white/30
+                        text-white
+                        hover:bg-primaria
+                        hover:text-black
+                        md:right-2
+                        md:size-9
+                    "
+                />
             </Carousel>
         </section>
     );

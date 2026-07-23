@@ -11,7 +11,7 @@ export default function Contato() {
                     <Field>
                         <FieldContent>
                             <div className="flex justify-center w-full">
-                                <div>
+                                <div className="mt-5">
                                     <p className="text-2xl font-bold tracking-tight md:text-4xl xl:text-7xl text-white flex items-center justify-center gap-10">
                                         <AudioLines width={50} height={50} color="#fcda54" /> Contato <AudioLines width={50} height={50} color="#fcda54" />
                                     </p>
