@@ -93,10 +93,10 @@ export function CardEnviarEmail() {
 
     return (
         <Fragment>
-            <Card className="bg-fundoSecundaria w-full p-10">
+            <Card className="bg-fundoSecundaria w-full py-5 md:p-10">
                 <CardContent>
-                    <div className="flex items-center gap-10 border-b border-fundoTerciaria pb-5">
-                        <div className="p-5 border border-fundoTerciaria rounded-full bg-fundoTerciaria">
+                    <div className="md:flex items-center gap-10 border-b border-fundoTerciaria pb-5">
+                        <div className="flex justify-center md:block p-5 md:border border-fundoTerciaria rounded-full md:bg-fundoTerciaria">
                             <Mail width={30} height={30} color="#fcda54" />
                         </div>
                         <div>
@@ -104,7 +104,7 @@ export function CardEnviarEmail() {
                             <FieldDescription className="mt-2 text-sm text-gray-400">Preencha os campos abaixo para enviar sua mensagem.</FieldDescription>
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-10">
                         <div className="w-full">
                             <FieldLabel className="text-white mt-5">Para</FieldLabel>
                             <InputGroup className="border-[#2A2F3A]">
@@ -134,8 +134,8 @@ export function CardEnviarEmail() {
                             <p className="text-gray-400 text-[13px] mt-2">Responderemos para este e-mail.</p>
                         </div>
                     </div>
-                    <div className="flex gap-10">
-                        <div className="w-1/2">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-10">
+                        <div className="w-full">
                             <FieldLabel className="text-white mt-5">
                                 Assunto *
                             </FieldLabel>
@@ -162,7 +162,7 @@ export function CardEnviarEmail() {
                             </Select>
                         </div>
 
-                        <div className="w-1/2">
+                        <div className="w-full">
                             <FieldLabel className="text-white mt-5">
                                 Produto (opcional)
                             </FieldLabel>

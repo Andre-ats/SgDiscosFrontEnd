@@ -7,9 +7,9 @@ import { Fragment } from "react/jsx-runtime";
 export function CardsContato() {
     return (
         <Fragment>
-            <div className="grid grid-cols-3 mt-10 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-10 gap-5">
                 {/*WhatsApp*/}
-                <Card className="bg-fundoSecundaria p-15">
+                <Card className="bg-fundoSecundaria p-10 sm:p-15">
                     <CardHeader className="flex justify-center">
                         <div className="border border-fundoTerciaria p-3 rounded-full bg-fundoTerciaria">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" viewBox="0 0 24 24" fill="none">
@@ -46,7 +46,7 @@ export function CardsContato() {
                     </div>
                 </Card>
                 {/*Email*/}
-                <Card className="bg-fundoSecundaria p-15">
+                <Card className="bg-fundoSecundaria p-10 sm:p-15">
                     <CardHeader className="flex justify-center">
                         <div className="border border-fundoTerciaria p-3 rounded-full bg-fundoTerciaria">
                             <Mail color="#fcda54" height={50} width={50} />
@@ -73,7 +73,7 @@ export function CardsContato() {
                     </div>
                 </Card>
                 {/*Horario*/}
-                <Card className="bg-fundoSecundaria p-15">
+                <Card className="bg-fundoSecundaria p-10 sm:p-15">
                     <CardHeader className="flex justify-center">
                         <div className="border border-fundoTerciaria p-3 rounded-full bg-fundoTerciaria">
                             <Clock color="#fcda54" height={50} width={50} />

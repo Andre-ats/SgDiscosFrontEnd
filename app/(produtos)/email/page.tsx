@@ -11,7 +11,7 @@ export default function EnviarEmail() {
 
     return (
         <div className="flex w-full flex-col items-center bg-fundoPrimaria">
-            <div className="w-3/4">
+            <div className="sm:w-3/4 w-full">
                 <Button
                     onClick={() => router.back()}
                     className="flex w-fit cursor-pointer items-center gap-2 bg-primaria text-black hover:bg-[#ffcf0d]"
@@ -21,7 +21,7 @@ export default function EnviarEmail() {
                 </Button>
             </div>
 
-            <div className="mt-6 w-3/4">
+            <div className="mt-6 sm:w-3/4 w-full">
                 <Suspense
                     fallback={
                         <div className="text-white">

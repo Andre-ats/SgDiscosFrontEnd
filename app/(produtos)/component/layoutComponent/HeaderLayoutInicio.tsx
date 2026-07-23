@@ -56,21 +56,21 @@ export function HeaderLayoutInicio() {
     return (
         <Fragment>
             <div className="w-full xl:flex">
-                <div className="flex pb-1.5 justify-center mb-5 xl:mb-0">
-                    <div className="px-4 py-2">
-                        <Image
-                            src={logoSgDiscos}
-                            alt=""
-                            width={40}
-                            height={40}
-                        />
-                    </div>
-                    <div className="flex justify-center mt-5">
-                        <CardDescription className="text-white text-2xl flex ml-0.5">
-                            <p className="text-primaria">SG</p>DISCOS
+                <Link href={"/"}>
+                    <div className="flex items-center justify-center xl:justify-start my-2 gap-2 py-4">
+                        <div className="relative h-10 w-10">
+                            <Image
+                                src={logoSgDiscos}
+                                alt="Logo SG Discos"
+                                fill
+                            />
+                        </div>
+                        <CardDescription className="flex text-2xl text-white">
+                            <span className="text-primaria">SG</span>
+                            DISCOS
                         </CardDescription>
                     </div>
-                </div>
+                </Link>
                 <div className="flex w-full justify-center items-center mb-10 xl:mb-0">
                     <Field className="xl:w-1/2 md:w-3/4 w-full">
                         <InputGroup className="border-[#2A2F3A]">
