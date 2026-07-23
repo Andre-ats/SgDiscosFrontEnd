@@ -4,19 +4,17 @@ import {
     Mail,
     MailIcon,
     MapPin,
-    MessageCircle,
     Phone,
 
 } from "lucide-react";
 import logoSgDiscos from "../../../../public/icon/logoSgDiscosSemEscrita.png";
-import instaLogo from "../../../../public/icon/instaIcon.png";
 import Link from "next/link";
 
 export function FooterInicio() {
     return (
         <div className="w-full flex justify-center mt-4 pl-4 border-t border-fundoSecundaria">
             <footer className="w-full">
-                <div className="w-3/4 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 py-12">
+                <div className="sm:w-3/4 w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 py-12">
 
                     {/* Logo */}
                     <div>
@@ -65,7 +63,7 @@ export function FooterInicio() {
                     </div>
 
                     {/* Navegação */}
-                    <div className="flex flex-col gap-3 justify-self-center">
+                    <div className="flex flex-col gap-3 lg:justify-self-center">
                         <h2 className="text-primaria font-semibold uppercase">
                             Navegação
                         </h2>
@@ -90,7 +88,7 @@ export function FooterInicio() {
                     </div>
 
                     {/* Atendimento */}
-                    <div className="flex flex-col gap-5 justify-self-end">
+                    <div className="flex flex-col gap-5 lg:justify-self-end">
                         <h2 className="text-primaria font-semibold uppercase">
                             Atendimento
                         </h2>
@@ -132,7 +130,7 @@ export function FooterInicio() {
                 </div>
 
                 <div className="border-t border-white/10">
-                    <div className="w-3/4 mx-auto flex flex-col md:flex-row justify-between items-center py-6 text-gray-500 text-sm">
+                    <div className="sm:w-3/4 w-full mx-auto flex flex-col md:flex-row justify-between items-center py-6 text-gray-500 text-sm">
                         <p>
                             © {new Date().getFullYear()}{" "}
                             <span className="text-primaria">

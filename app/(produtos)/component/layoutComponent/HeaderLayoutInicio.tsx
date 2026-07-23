@@ -55,8 +55,8 @@ export function HeaderLayoutInicio() {
 
     return (
         <Fragment>
-            <div className="w-full flex">
-                <div className="flex w-1/5 pb-1.5">
+            <div className="w-full xl:flex">
+                <div className="flex pb-1.5 justify-center mb-5 xl:mb-0">
                     <div className="px-4 py-2">
                         <Image
                             src={logoSgDiscos}
@@ -71,8 +71,8 @@ export function HeaderLayoutInicio() {
                         </CardDescription>
                     </div>
                 </div>
-                <div className="w-3/5 flex justify-center items-center">
-                    <Field className="w-1/2">
+                <div className="flex w-full justify-center items-center mb-10 xl:mb-0">
+                    <Field className="xl:w-1/2 md:w-3/4 w-full">
                         <InputGroup className="border-[#2A2F3A]">
                             <InputGroupInput
                                 value={barraDePesquisa}
@@ -98,9 +98,6 @@ export function HeaderLayoutInicio() {
                             </Button>
                         </InputGroup>
                     </Field>
-                </div>
-                <div className="w-1/5">
-
                 </div>
             </div>
         </Fragment>

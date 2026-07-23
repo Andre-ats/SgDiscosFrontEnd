@@ -12,10 +12,50 @@ import {
 import { useEffect, useRef, useState } from "react";
 import fundo01 from "../../../../public/banners/telaInicio/tela01Imagem.jpeg"
 import fundo02 from "../../../../public/banners/telaInicio/tela02Imagem.jpeg"
+import fundo01Menor from "../../../../public/banners/telaInicio/tela01ImagemMenor.jpg"
+import fundo02Menor from "../../../../public/banners/telaInicio/tela02ImagemMenor.jpg"
 import { CardDescription, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Disc3Icon, MessageCircleIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
+
+import type { StaticImageData } from "next/image";
+
+interface BannerResponsivoProps {
+    imagemDesktop: StaticImageData;
+    imagemMobile: StaticImageData;
+    alt: string;
+    priority?: boolean;
+}
+
+function BannerResponsivo({
+    imagemDesktop,
+    imagemMobile,
+    alt,
+    priority = false,
+}: BannerResponsivoProps) {
+    return (
+        <>
+            <Image
+                src={imagemMobile}
+                alt={alt}
+                fill
+                priority={priority}
+                sizes="(max-width: 767px) 100vw, 0px"
+                className="object-cover object-center md:hidden"
+            />
+
+            <Image
+                src={imagemDesktop}
+                alt={alt}
+                fill
+                priority={priority}
+                sizes="(min-width: 768px) 100vw, 0px"
+                className="hidden object-cover object-center md:block"
+            />
+        </>
+    );
+}
 
 
 export function CarouselImagesInicio() {
@@ -81,14 +121,12 @@ export function CarouselImagesInicio() {
             <Carousel setApi={setApi} className="w-full">
                 <CarouselContent>
                     <CarouselItem>
-                        <div className="relative 2xl:h-100 xl:h-100 md:h-75 h-37.5 w-full overflow-hidden rounded-2xl">
-                            <Image
-                                src={fundo01}
+                        <div className="relative h-60 sm:h-80 lg:h-100 w-full overflow-hidden rounded-2xl">
+                            <BannerResponsivo
+                                imagemDesktop={fundo01}
+                                imagemMobile={fundo01Menor}
                                 alt="Banner SG Discos"
-                                fill
                                 priority
-                                sizes="100vw"
-                                className="lg:object-cover lg:object-center"
                             />
 
                             <div className="absolute inset-0 bg-black/80 rounded-l-xl" />
@@ -103,7 +141,7 @@ export function CarouselImagesInicio() {
                                         Sua opção de música
                                     </CardDescription>
 
-                                    <CardDescription className="mb-5 hidden max-w-lg text-sm leading-relaxed text-zinc-300 md:block xl:text-lg">
+                                    <CardDescription className="mb-5 max-w-lg text-sm leading-relaxed text-zinc-300 hidden sm:block xl:text-lg">
                                         Explore nosso catálogo completo e encontre o <br /> disco
                                         perfeito para a sua coleção.
                                     </CardDescription>
@@ -116,13 +154,11 @@ export function CarouselImagesInicio() {
                         </div>
                     </CarouselItem>
                     <CarouselItem>
-                        <div className="relative 2xl:h-100 xl:h-100 md:h-75 h-37.5 w-full overflow-hidden rounded-2xl">
-                            <Image
-                                src={fundo02}
+                        <div className="relative h-60 sm:h-80 lg:h-100 w-full overflow-hidden rounded-2xl">
+                            <BannerResponsivo
+                                imagemDesktop={fundo02}
+                                imagemMobile={fundo02Menor}
                                 alt="Entre em contato com a SG Discos"
-                                fill
-                                sizes="100vw"
-                                className="object-cover object-center"
                             />
 
                             <div className="absolute inset-0 bg-black/80" />
@@ -138,8 +174,8 @@ export function CarouselImagesInicio() {
                                         Estamos prontos para ajudar
                                     </CardDescription>
 
-                                    <CardDescription className="mb-5 hidden max-w-lg text-sm leading-relaxed text-zinc-300 md:block xl:text-lg">
-                                        Tire suas dúvidas, solicite informações ou fale com nossa equipe sobre
+                                    <CardDescription className="mb-5 max-w-lg text-sm leading-relaxed text-zinc-300 hidden sm:block xl:text-lg">
+                                        Tire suas dúvidas, solicite informações ou <br /> fale com nossa equipe sobre
                                         pedidos e produtos.
                                     </CardDescription>
 

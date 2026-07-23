@@ -16,14 +16,14 @@ export default function LayoutInicio({
     return (
         <div className="min-h-screen w-full bg-fundoPrimaria">
             <header className="w-full flex justify-center bg-fundoPrimaria border-b border-b-fundoSecundaria">
-                <div className="w-3/4">
+                <div className="sm:w-3/4 w-full px-5 sm:p-0">
                     <HeaderLayoutInicio />
                 </div>
             </header>
 
             <main className="w-full">
                 <div className="w-full flex justify-center mt-4 pl-4">
-                    <div className="w-3/4">
+                    <div className="sm:w-3/4 w-full px-2 sm:p-0">
                         <LinksLayoutInicio/>
                     </div>
                 </div>

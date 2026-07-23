@@ -6,7 +6,7 @@ import { generoListagem } from "./component/funcoes/GeneroListagem";
 export default function TelaInicio() {
     return (
         <div className="bg-fundoPrimaria w-full flex flex-row justify-center">
-            <div className="w-3/4">
+            <div className="sm:w-3/4 w-full">
                 <CarouselImagesInicio />
                 <CarouselGenero titulo="Explore por gênero"
                     lista={generoListagem}
