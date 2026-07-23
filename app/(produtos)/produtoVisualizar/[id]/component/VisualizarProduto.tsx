@@ -30,8 +30,8 @@ export function VisualizarProduto() {
     return (
         <Fragment>
             <div className="flex w-full justify-center bg-fundoPrimaria">
-                <div className="flex w-3/4 flex-row">
-                    <div>
+                <div className="flex sm:w-3/4 w-full flex-row">
+                    <div className="w-full">
                         <Button
                             onClick={() => router.back()}
                             className="cursor-pointer flex bg-primaria items-center gap-2 text-black hover:bg-[#ffcf0d]"
