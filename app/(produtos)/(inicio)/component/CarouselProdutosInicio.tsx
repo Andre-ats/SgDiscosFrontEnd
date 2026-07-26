@@ -10,6 +10,7 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel";
+import { trackSelectItem } from "@/lib/analytics";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -66,29 +67,34 @@ export function CarouselInicio(props: ICarouselInicio) {
                     >
                         <CarouselContent className="">
                             {produtos?.paginacaoOutput.itens.map((produto, key) => (
-                                <Fragment key={key}>
-                                    {produto.statusProduto !== EnumStatusProduto.Inativo &&
-                                        <CarouselItem
-                                            className={props.classQuadrado}
-                                        >
-                                            <Link href={`/produtoVisualizar/${produto.id}`}>
-                                                <div className="group relative aspect-square w-full overflow-hidden rounded-xl">
-                                                    <Image
-                                                        src={UrlImagem(produto.arquivosProdutos[0].publicId, produto.arquivosProdutos[0].tipoArquivoProduto)}
-                                                        alt={produto.nomeProduto}
-                                                        width={props.widthImage}
-                                                        height={props.heightImage}
-                                                        fill={props.fill}
-                                                        className="object-cover transition duration-300 group-hover:scale-105"
-                                                    />
+                                produto.statusProduto !== EnumStatusProduto.Inativo && (
+                                    <CarouselItem
+                                        key={key}
+                                        className={props.classQuadrado}
+                                    >
+                                        <Link onClick={() =>
+                                            trackSelectItem(
+                                                produto.id,
+                                                produto.nomeProduto,
+                                                produto.precoProduto
+                                            )
+                                        } href={`/produtoVisualizar/${produto.id}`}>
+                                            <div className="group relative aspect-square w-full overflow-hidden rounded-xl">
+                                                <Image
+                                                    src={UrlImagem(produto.arquivosProdutos[0].publicId, produto.arquivosProdutos[0].tipoArquivoProduto)}
+                                                    alt={produto.nomeProduto}
+                                                    width={props.widthImage}
+                                                    height={props.heightImage}
+                                                    fill={props.fill}
+                                                    className="object-cover transition duration-300 group-hover:scale-105"
+                                                />
 
-                                                    <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent" />
-                                                </div>
+                                                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent" />
+                                            </div>
 
-                                            </Link>
-                                        </CarouselItem>
-                                    }
-                                </Fragment>
+                                        </Link>
+                                    </CarouselItem>
+                                )
                             ))}
                         </CarouselContent>
 
@@ -126,6 +132,6 @@ export function CarouselInicio(props: ICarouselInicio) {
                 </section>
 
             }
-        </Fragment>
+        </Fragment >
     );
 }

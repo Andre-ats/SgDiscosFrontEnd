@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { trackSearch } from "@/lib/analytics";
 
 const placeholders = [
     "Back in Black...",
@@ -32,6 +33,10 @@ export function HeaderLayoutInicio() {
 
     function handleBuscar() {
         const busca = barraDePesquisa.trim();
+
+        if (busca) {
+            trackSearch(busca);
+        }
 
         router.push(
             busca
