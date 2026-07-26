@@ -22,8 +22,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     try {
         const produtos = await GetProdutos({
             paginaAtual: 1,
-            itensPorPagina: 100000,
+            itensPorPagina: 100,
         });
+
+        console.log(produtos);
+        console.log(produtos.paginacaoOutput.itens.length);
 
         const paginasProdutos: MetadataRoute.Sitemap =
             produtos.paginacaoOutput.itens.map((produto) => ({
