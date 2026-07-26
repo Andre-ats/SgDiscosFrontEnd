@@ -6,8 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-
     sitemap: "https://sgdiscos.com.br/sitemap.xml",
-    host: "https://sgdiscos.com.br",
   };
 }
