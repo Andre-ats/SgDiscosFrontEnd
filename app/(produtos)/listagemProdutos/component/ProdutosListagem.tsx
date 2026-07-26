@@ -15,6 +15,7 @@ import {
 import Image from "next/image";
 import { PaginacaoProdutos } from "./PaginacaoProdutos";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface ProdutosListagemProps {
     produtos?: IListagemProdutosResponse;
@@ -33,6 +34,8 @@ export function ProdutosListagem({
                 item.statusProduto !==
                 EnumStatusProduto.Inativo
         ) ?? [];
+
+    const router = useRouter();
 
     if (itens.length === 0) {
         return (
@@ -62,7 +65,8 @@ export function ProdutosListagem({
                 {itens.map((item) => (
                     <Card
                         key={item.id}
-                        className="group overflow-hidden border-white/10 bg-fundoSecundaria"
+                        className="cursor-pointer group overflow-hidden border-white/10 bg-fundoSecundaria"
+                        onClick={() => router.push(`/produtoVisualizar/${item.id}`)}
                     >
                         <CardContent>
                             <div className="relative aspect-square w-full overflow-hidden rounded-xl">
@@ -136,28 +140,29 @@ export function ProdutosListagem({
                                     )}
 
                                     <div className="flex shrink-0 gap-2 mt-2 sm:m-0">
-                                        <Link href={`/produtoVisualizar/${item.id}`}>
-                                            <Button
-                                                variant="outline"
-                                                size="icon"
-                                                aria-label={`Visualizar ${item.nomeProduto}`}
-                                                className="cursor-pointer size-9 border-white/15 bg-transparent text-white hover:border-primaria hover:bg-primaria/10 hover:text-primaria"
-                                            >
-                                                <Eye />
-                                            </Button>
-                                        </Link>
+                                        <Button
+                                            className="cursor-pointer size-9 border-white/15 bg-transparent text-white hover:border-primaria hover:bg-primaria/10 hover:text-primaria"
+                                            size="icon"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                router.push(`/produtoVisualizar/${item.id}`);
+                                            }}
+                                        >
+                                            <Eye />
+                                        </Button>
 
-                                        <Link href={`/email?id=${item.id}&nomeProduto=${item.nomeProduto}&nomeArtistaBanda=${item.nomeArtistaBandaProduto}`}>
-                                            <Button
-                                                size="icon"
-                                                aria-label={`Consultar ${item.nomeProduto} pelo WhatsApp`}
-                                                className="cursor-pointer size-9 bg-primaria text-black hover:bg-primaria/80"
-                                            >
-                                                <Mail
-                                                    size={17}
-                                                />
-                                            </Button>
-                                        </Link>
+                                        <Button
+                                            className="cursor-pointer size-9 bg-primaria text-black hover:bg-primaria/80"
+                                            size="icon"
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                router.push(
+                                                    `/email?id=${item.id}&nomeProduto=${item.nomeProduto}&nomeArtistaBanda=${item.nomeArtistaBandaProduto}`
+                                                );
+                                            }}
+                                        >
+                                            <Mail />
+                                        </Button>
                                     </div>
                                 </div>
                             </div>

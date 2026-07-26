@@ -71,6 +71,7 @@ export function CarouselGenero(props: ICarouselGenero) {
                 </CarouselContent>
                 <CarouselPrevious
                     className="
+                        disabled:hidden
                         left-1
                         size-8
                         border-none
@@ -85,6 +86,7 @@ export function CarouselGenero(props: ICarouselGenero) {
 
                 <CarouselNext
                     className="
+                        disabled:hidden
                         right-1
                         size-8
                         border-none

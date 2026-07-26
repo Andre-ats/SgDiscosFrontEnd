@@ -109,7 +109,7 @@ export function FiltroListagemProdutos({
     function ConteudoFiltro() {
         return (
             <>
-                <CardHeader className="flex flex-row items-center justify-between border-b border-[#2A2F3A] px-1 py-5">
+                <CardHeader className="flex flex-row items-center justify-between border-b border-[#2A2F3A] px-1 py-7">
                     <p className="text-lg font-semibold tracking-wide text-white mb-3">
                         Filtros
                     </p>
