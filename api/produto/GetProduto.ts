@@ -36,7 +36,6 @@ export async function GetProdutos(
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
         }
     );
