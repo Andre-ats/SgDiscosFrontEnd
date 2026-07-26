@@ -91,30 +91,32 @@ export function CarouselInicio(props: ICarouselInicio) {
 
                         <CarouselPrevious
                             className="
-                        left-1
-                        size-8
-                        border-none
-                        bg-white/30
-                        text-white
-                        hover:bg-primaria
-                        hover:text-black
-                        md:left-2
-                        md:size-9
-                    "
+                                disabled:hidden
+                                left-1
+                                size-8
+                                border-none
+                                bg-white/30
+                                text-white
+                                hover:bg-primaria
+                                hover:text-black
+                                md:left-2
+                                md:size-9
+                            "
                         />
 
                         <CarouselNext
                             className="
-                        right-1
-                        size-8
-                        border-none
-                        bg-white/30
-                        text-white
-                        hover:bg-primaria
-                        hover:text-black
-                        md:right-2
-                        md:size-9
-                    "
+                                disabled:hidden
+                                right-1
+                                size-8
+                                border-none
+                                bg-white/30
+                                text-white
+                                hover:bg-primaria
+                                hover:text-black
+                                md:right-2
+                                md:size-9
+                            "
                         />
                     </Carousel>
                 </section>
