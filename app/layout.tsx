@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Toaster } from "sonner";
@@ -9,12 +9,38 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://sgdiscos.com.br"),
 
   title: {
-    default: "SG Discos | Discos de Vinil",
-    template: "%s | SG Discos",
+    default: "SGDiscos | Discos de Vinil",
+    template: "%s | SGDiscos",
   },
 
   description:
     "Encontre discos de vinil de Rock, Metal, Jazz, Pop, Hip-Hop e diversos outros gêneros aqui, na SGDiscos.",
+
+  openGraph: {
+    title: "SGDiscos | Discos de Vinil",
+    description:
+      "Encontre discos de vinil de Rock, Metal, Jazz, Pop, Hip-Hop e diversos outros gêneros aqui, na SGDiscos.",
+    url: "https://sgdiscos.com.br",
+    siteName: "SGDiscos",
+    locale: "pt_BR",
+    type: "website",
+    images: [
+      {
+        url: "/icon/logoSgDiscosSemEscrita.png",
+        width: 512,
+        height: 512,
+        alt: "Logo da SGDiscos",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "SGDiscos | Discos de Vinil",
+    description:
+      "Encontre discos de vinil de Rock, Metal, Jazz, Pop, Hip-Hop e diversos outros gêneros aqui, na SGDiscos.",
+    images: ["/icon/logoSgDiscosSemEscrita.png"],
+  },
 
   icons: {
     icon: "/icon/logoSgDiscosSemEscrita.png",
@@ -37,10 +63,15 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={montserrat.className}>
         {children}
-        <Toaster richColors theme="dark" position="bottom-right" />
-      </body>
 
-      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
+        <Toaster
+          richColors
+          theme="dark"
+          position="bottom-right"
+        />
+
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
+      </body>
     </html>
   );
 }

@@ -1,48 +1,63 @@
-import { Fragment } from "react/jsx-runtime";
+import type { Metadata } from "next";
 import { VisualizarProduto } from "./component/VisualizarProduto";
 import { getProdutoById } from "@/api/produto/GetProdutoById";
-import { Metadata } from "next";
+import { UrlImagem } from "@/api/UrlImagem";
+import { EnumTipoArquivoProduto } from "@/api/types/ProdutoType";
 
-type ProdutoVisualizarProps = {
-    params: Promise<{
-        id: string;
-    }>;
+type Props = {
+  params: Promise<{
+    id: string;
+  }>;
 };
 
 export async function generateMetadata({
-    params,
-}: ProdutoVisualizarProps): Promise<Metadata> {
-    const { id } = await params;
+  params,
+}: Props): Promise<Metadata> {
+  const { id } = await params;
 
-    try {
-        const produto = await getProdutoById(id);
+  const produto = await getProdutoById(id);
 
-        if (!produto) {
-            return {
-                title: "Produto não encontrado",
-                description: "O produto solicitado não foi encontrado na SG Discos.",
-            };
-        }
+  if (!produto) {
+    return {
+      title: "Produto não encontrado",
+    };
+  }
 
-        return {
-            title: produto.nomeProduto,
-            description:
-                produto.descricaoProduto ||
-                `Confira ${produto.nomeProduto} disponível na SG Discos.`,
-        };
-    } catch {
-        return {
-            title: "Visualizar produto",
-            description: "Confira os detalhes deste produto na SG Discos.",
-        };
-    }
+  const imagem = produto.arquivosProdutos.find(
+    (x) => x.tipoArquivoProduto === EnumTipoArquivoProduto.Imagem
+  );
+
+  return {
+    title: produto.nomeProduto,
+    description: produto.descricaoProduto,
+
+    openGraph: {
+      title: produto.nomeProduto,
+      description: produto.descricaoProduto,
+      images: imagem
+        ? [
+            UrlImagem(
+              imagem.publicId,
+              EnumTipoArquivoProduto.Imagem
+            ),
+          ]
+        : [],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      images: imagem
+        ? [
+            UrlImagem(
+              imagem.publicId,
+              EnumTipoArquivoProduto.Imagem
+            ),
+          ]
+        : [],
+    },
+  };
 }
 
 export default function ProdutoVisualizar() {
-
-    return (
-        <Fragment>
-            <VisualizarProduto />
-        </Fragment>
-    )
+  return <VisualizarProduto />;
 }
