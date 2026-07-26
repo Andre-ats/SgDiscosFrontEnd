@@ -4,6 +4,7 @@ import "./globals.css";
 import { Montserrat } from "next/font/google";
 import { Toaster } from "sonner";
 import { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   title: "SGDiscos",
@@ -30,6 +31,9 @@ export default function RootLayout({
         {children}
         <Toaster richColors theme="dark" position="bottom-right" />
       </body>
+      <GoogleAnalytics
+        gaId={process.env.NEXT_PUBLIC_GA_ID!}
+      />
     </html>
   );
 }
