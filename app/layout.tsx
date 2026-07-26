@@ -1,13 +1,47 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata } from "next";
+import { Montserrat } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { Toaster } from "sonner";
+
 import "./globals.css";
 
-import { Montserrat } from "next/font/google";
-import { Toaster } from "sonner";
-import { Metadata } from "next";
-import { GoogleAnalytics } from "@next/third-parties/google";
-
 export const metadata: Metadata = {
-  title: "SGDiscos",
+  metadataBase: new URL("https://sgdiscos.com.br"),
+
+  title: {
+    default: "SGDiscos | Discos de Vinil",
+    template: "%s | SGDiscos",
+  },
+
+  description:
+    "Encontre discos de vinil de Rock, Metal, Jazz, Pop, Hip-Hop e diversos outros gêneros aqui, na SGDiscos.",
+
+  openGraph: {
+    title: "SGDiscos | Discos de Vinil",
+    description:
+      "Encontre discos de vinil de Rock, Metal, Jazz, Pop, Hip-Hop e diversos outros gêneros aqui, na SGDiscos.",
+    url: "https://sgdiscos.com.br",
+    siteName: "SGDiscos",
+    locale: "pt_BR",
+    type: "website",
+    images: [
+      {
+        url: "/icon/logoSgDiscosSemEscrita.png",
+        width: 512,
+        height: 512,
+        alt: "Logo da SGDiscos",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "SGDiscos | Discos de Vinil",
+    description:
+      "Encontre discos de vinil de Rock, Metal, Jazz, Pop, Hip-Hop e diversos outros gêneros aqui, na SGDiscos.",
+    images: ["/icon/logoSgDiscosSemEscrita.png"],
+  },
+
   icons: {
     icon: "/icon/logoSgDiscosSemEscrita.png",
     shortcut: "/icon/logoSgDiscosSemEscrita.png",
@@ -29,11 +63,15 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={montserrat.className}>
         {children}
-        <Toaster richColors theme="dark" position="bottom-right" />
+
+        <Toaster
+          richColors
+          theme="dark"
+          position="bottom-right"
+        />
+
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
       </body>
-      <GoogleAnalytics
-        gaId={process.env.NEXT_PUBLIC_GA_ID!}
-      />
     </html>
   );
 }

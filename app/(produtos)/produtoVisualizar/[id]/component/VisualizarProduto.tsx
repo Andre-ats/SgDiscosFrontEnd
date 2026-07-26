@@ -16,6 +16,7 @@ import { trackViewItem } from "@/lib/analytics";
 
 export function VisualizarProduto() {
 
+
     const { id } = useParams();
     const [produto, setProduto] = useState<IProduto>()
     const router = useRouter();
