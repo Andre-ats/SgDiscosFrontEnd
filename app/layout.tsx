@@ -1,13 +1,21 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Metadata } from "next";
+import { Montserrat } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { Toaster } from "sonner";
+
 import "./globals.css";
 
-import { Montserrat } from "next/font/google";
-import { Toaster } from "sonner";
-import { Metadata } from "next";
-import { GoogleAnalytics } from "@next/third-parties/google";
-
 export const metadata: Metadata = {
-  title: "SGDiscos",
+  metadataBase: new URL("https://sgdiscos.com.br"),
+
+  title: {
+    default: "SG Discos | Discos de Vinil",
+    template: "%s | SG Discos",
+  },
+
+  description:
+    "Encontre discos de vinil de Rock, Metal, Jazz, Pop, Hip-Hop e diversos outros gêneros aqui, na SGDiscos.",
+
   icons: {
     icon: "/icon/logoSgDiscosSemEscrita.png",
     shortcut: "/icon/logoSgDiscosSemEscrita.png",
@@ -31,9 +39,8 @@ export default function RootLayout({
         {children}
         <Toaster richColors theme="dark" position="bottom-right" />
       </body>
-      <GoogleAnalytics
-        gaId={process.env.NEXT_PUBLIC_GA_ID!}
-      />
+
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
     </html>
   );
 }
