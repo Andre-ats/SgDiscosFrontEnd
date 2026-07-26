@@ -12,6 +12,7 @@ import { IProduto } from "@/api/types/ProdutoType";
 import { getProdutoById } from "@/api/produto/GetProdutoById";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import { trackViewItem } from "@/lib/analytics";
 
 export function VisualizarProduto() {
 
@@ -22,6 +23,16 @@ export function VisualizarProduto() {
     useEffect(() => {
         getProdutosByIdHandler()
     }, [])
+
+    useEffect(() => {
+        if (!produto) return;
+
+        trackViewItem(
+            produto.id,
+            produto.nomeProduto,
+            produto.precoProduto
+        );
+    }, [produto]);
 
     async function getProdutosByIdHandler() {
         setProduto(await getProdutoById(id as string))

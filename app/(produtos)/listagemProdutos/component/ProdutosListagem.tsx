@@ -16,6 +16,7 @@ import Image from "next/image";
 import { PaginacaoProdutos } from "./PaginacaoProdutos";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { trackSelectItem } from "@/lib/analytics";
 
 interface ProdutosListagemProps {
     produtos?: IListagemProdutosResponse;
@@ -36,6 +37,16 @@ export function ProdutosListagem({
         ) ?? [];
 
     const router = useRouter();
+
+    function abrirProduto(item: typeof itens[number]) {
+        trackSelectItem(
+            item.id,
+            item.nomeProduto,
+            item.precoProduto
+        );
+
+        router.push(`/produtoVisualizar/${item.id}`);
+    }
 
     if (itens.length === 0) {
         return (
@@ -66,7 +77,7 @@ export function ProdutosListagem({
                     <Card
                         key={item.id}
                         className="cursor-pointer group overflow-hidden border-white/10 bg-fundoSecundaria"
-                        onClick={() => router.push(`/produtoVisualizar/${item.id}`)}
+                        onClick={() => abrirProduto(item)}
                     >
                         <CardContent>
                             <div className="relative aspect-square w-full overflow-hidden rounded-xl">
@@ -145,7 +156,7 @@ export function ProdutosListagem({
                                             size="icon"
                                             onClick={(e) => {
                                                 e.stopPropagation();
-                                                router.push(`/produtoVisualizar/${item.id}`);
+                                                abrirProduto(item);
                                             }}
                                         >
                                             <Eye />
