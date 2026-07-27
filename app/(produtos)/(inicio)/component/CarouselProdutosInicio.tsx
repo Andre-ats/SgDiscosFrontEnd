@@ -81,7 +81,7 @@ export function CarouselInicio(props: ICarouselInicio) {
                                         } href={`/produtoVisualizar/${produto.id}`}>
                                             <div className="group relative aspect-square w-full overflow-hidden rounded-xl">
                                                 <Image
-                                                    src={UrlImagem(produto.arquivosProdutos[0].publicId, produto.arquivosProdutos[0].tipoArquivoProduto)}
+                                                    src={UrlImagem(produto?.arquivosProdutos[0]?.publicId, produto?.arquivosProdutos[0]?.tipoArquivoProduto)}
                                                     alt={produto.nomeProduto}
                                                     width={props.widthImage}
                                                     height={props.heightImage}

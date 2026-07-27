@@ -1,6 +1,6 @@
 import imgRock from "../../../../../public/cardGenero/rockCard.png"
 import imgJazz from "../../../../../public/cardGenero/jazzCard.png"
-import imgHipHop from "../../../../../public/cardGenero/hiphopCard.png"
+import imgRnB from "../../../../../public/cardGenero/rnbCard.png"
 import imgPop from "../../../../../public/cardGenero/popCard.png"
 import imgMetal from "../../../../../public/cardGenero/metalCard.png"
 import imgGeral from "../../../../../public/cardGenero/geralCard.png"
@@ -27,9 +27,9 @@ export const generoListagem = [
     link: EnumGeneroMusicalProduto.Jazz
   },
   {
-    nome: "HipHop",
-    imagem: imgHipHop,
-    link: EnumGeneroMusicalProduto.HipHop
+    nome: "RnB",
+    imagem: imgRnB,
+    link: EnumGeneroMusicalProduto.RnB
   },
   {
     nome: "Pop",

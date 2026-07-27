@@ -1,5 +1,6 @@
 'use client'
 
+import { trocarGenero } from "@/api/funcoes/trocarGenero";
 import { EnumGeneroMusicalProduto } from "@/api/types/ProdutoType";
 import {
     Carousel,
@@ -63,7 +64,7 @@ export function CarouselGenero(props: ICarouselGenero) {
                                 <div className="absolute inset-0 bg-black/80 rounded-l-xl" />
 
                                 <span className="absolute inset-0 flex items-center justify-center text-xl font-bold text-white">
-                                    {produto.nome}
+                                    {trocarGenero(produto.nome)}
                                 </span>
                             </div>
                         </CarouselItem>

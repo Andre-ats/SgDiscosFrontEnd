@@ -4,6 +4,7 @@ import { CarouselImages } from "./CarouselImages";
 import { Field, FieldContent, FieldDescription, FieldTitle } from "@/components/ui/field";
 import { Barcode, CalendarDays, Disc3Icon, Layers, Package, PackageCheckIcon, ShieldCheck } from "lucide-react";
 import { EnumStatusProduto, IProduto } from "@/api/types/ProdutoType";
+import { trocarGenero } from "@/api/funcoes/trocarGenero";
 
 interface IVisualizacaoPrincipal {
     produtos?: IProduto
@@ -13,7 +14,7 @@ export function VisualizacaoPrincipal(props: IVisualizacaoPrincipal) {
     return (
         <Fragment>
             <Card className="grid h-full gap-8 bg-fundoTerciaria p-6 2xl:grid-cols-[420px_1fr]">
-                <CarouselImages arquivos={props.produtos?.arquivosProdutos} produtos={props.produtos}/>
+                <CarouselImages arquivos={props.produtos?.arquivosProdutos} produtos={props.produtos} />
                 <div className="flex w-full flex-row items-stretch gap-5">
                     <Field>
                         <div className="mb-4 flex items-center gap-3">
@@ -89,7 +90,7 @@ export function VisualizacaoPrincipal(props: IVisualizacaoPrincipal) {
                                     key={item}
                                     className="rounded-full border border-[#2A2F3A] bg-fundoSecundaria px-3 py-1 text-xs text-white"
                                 >
-                                    {item}
+                                    {trocarGenero(item)}
                                 </span>
                             ))}
                         </div>
