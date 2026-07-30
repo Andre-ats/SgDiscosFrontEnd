@@ -29,12 +29,8 @@ export function ProdutosListagem({
     onMudarPagina,
     onMudarItensPorPagina,
 }: ProdutosListagemProps) {
-    const itens =
-        produtos?.paginacaoOutput.itens.filter(
-            (item) =>
-                item.statusProduto !==
-                EnumStatusProduto.Inativo
-        ) ?? [];
+    
+    const itens = produtos?.paginacaoOutput.itens ?? [];
 
     const router = useRouter();
 

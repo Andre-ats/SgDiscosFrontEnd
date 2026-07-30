@@ -67,7 +67,7 @@ export function CarouselInicio(props: ICarouselInicio) {
                     >
                         <CarouselContent className="">
                             {produtos?.paginacaoOutput.itens.map((produto, key) => (
-                                produto.statusProduto !== EnumStatusProduto.Inativo && (
+                                (
                                     <CarouselItem
                                         key={key}
                                         className={props.classQuadrado}

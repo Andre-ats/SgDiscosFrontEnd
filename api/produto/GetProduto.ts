@@ -30,6 +30,8 @@ export async function GetProdutos(
     if (filtros?.statusProduto)
         params.append("StatusProduto", filtros.statusProduto);
 
+    params.append("ListarProdutosInativos", "false")
+
     const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/Produto/ListarProdutos?${params.toString()}`,
         {
